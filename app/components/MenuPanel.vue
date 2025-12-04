@@ -59,7 +59,7 @@
       </li>
       <li class="text-white pr-4 flex justify-center items-center gap-2">
         <span class="whitespace-nowrap">{{
-          currentTime > eventEndTime ? '活動已結束' : isEventActive ? '距離結束' : '距離活動'
+          currentTime > eventEndTime ? '活動已結束' : isEventActive ? '距離結束' : '距離下一次好康抽獎'
         }}</span>
         <client-only>
           <div class="flex justify-center items-center gap-2 xl:gap-3">
@@ -78,11 +78,6 @@
               >{{ minutes }}</span
             >
             分
-            <span
-              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
-              >{{ seconds }}</span
-            >
-            秒
           </div>
         </client-only>
       </li>

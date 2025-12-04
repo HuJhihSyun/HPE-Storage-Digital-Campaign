@@ -7,7 +7,6 @@ type ValidationErrors = {
   email: string
   phone: string
   mobile: string
-  address: string
 }
 
 export function useValidateUtils() {
@@ -21,7 +20,6 @@ export function useValidateUtils() {
       email: '',
       phone: '',
       mobile: '',
-      address: '',
       policy: ''
     }
 
@@ -57,8 +55,6 @@ export function useValidateUtils() {
     } else if (form.mobile && !/^09\d{8}$/.test(form.mobile)) {
       errorMessages.mobile = '請填寫有效之行動電話號碼'
     }
-
-    if (!form.address) errorMessages.address = '公司地址為必填欄位'
 
     if (!form.policy) errorMessages.policy = '請同意隱私政策'
 

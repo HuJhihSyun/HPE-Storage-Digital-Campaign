@@ -1,4 +1,7 @@
 <script setup lang="ts">
+  import bannerBgLeft from '@/assets/images/banner-bg-left.svg?skipsvgo'
+  import bannerBgRight from '@/assets/images/banner-bg-right.svg?skipsvgo'
+
   const featureData = [
     {
       title: '資料管理混亂',
@@ -25,8 +28,9 @@
 
 <template>
   <div>
-    <header class="relative w-full">
-      <img src="@/assets/images/banner.jpg" alt="banner" width="100%" class="object-cover w-full" />
+    <header class="relative w-full h-[56vw] bg-linear-to-bl from-[#00E0AF] from-5% via-[#01A982] via-30% to-[#292D3A]">
+      <bannerBgRight class="absolute h-full right-0 top-1/2 -translate-y-1/2" />
+      <bannerBgLeft class="absolute h-full left-0 top-1/2 -translate-y-1/2" />
       <div class="absolute w-full min-h-[13vw] bottom-0 left-0 bg-linear-to-t from-[#292D3A] to-transparent">
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>

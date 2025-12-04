@@ -53,7 +53,6 @@
     phone: '', // 聯絡電話
     ext: '', // 分機
     mobile: '', // 行動電話
-    address: '', // 地址
     information: '', // 資訊
     source: '', // 來源
     subscribe: false, // 訂閱電子報
@@ -181,7 +180,6 @@
     email: '',
     phone: '',
     mobile: '',
-    address: '',
     policy: ''
   })
 
@@ -344,15 +342,6 @@
             :error-message="errorMessages.mobile"
             :disabled="false"
           />
-          <BasicInput
-            v-model="formData.address"
-            label="請輸入您方便收件的地址"
-            :type="'text'"
-            placeholder="請輸入您的地址"
-            required
-            :error-message="errorMessages.address"
-            :disabled="false"
-          />
           <BasicTextarea
             v-model="formData.information"
             label="請問您想要了解哪方面的 Storage 服務資訊？"
@@ -372,13 +361,13 @@
           <ul class="m-0 p-0 flex flex-col gap-2 list-none">
             <h4 class="text-sm font-semibold text-white text-shadow-sm/20 whitespace-nowrap">個人資料收集使用政策</h4>
             <li class="flex justify-center items-start">
-              <BasicCheckbox class="w-4 min-w-4 h-4 mt-0.5" v-model="formData.subscribe" />
+              <BasicCheckbox class="w-6 min-w-6 h-6 mt-0.5" v-model="formData.subscribe" />
               <span class="HPEGraphikRegular inline-block text-white text-sm ml-2"
                 >我想收到 HPE 關於企業端的最新消息、公告與更多訊息。我可以隨時取消訂閱。</span
               >
             </li>
             <li class="flex justify-center items-start">
-              <BasicCheckbox class="w-4 min-w-4 h-4 mt-0.5" v-model="formData.policy" />
+              <BasicCheckbox class="w-6 min-w-6 h-6 mt-0.5" v-model="formData.policy" />
               <div>
                 <span class="HPEGraphikRegular inline-block text-white text-sm ml-2"
                   >您已閱讀並同意下方我們關於本次活動的規範以及 HPE 資料隱私權與安全性附加條款。</span
