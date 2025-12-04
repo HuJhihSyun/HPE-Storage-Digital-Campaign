@@ -1,12 +1,11 @@
 <script setup lang="ts">
   import { useGlobalLoading } from '@/composables/useGlobalLoading'
-  const { start: globalLoadingStart, finish: globalLoadingFinish } = useGlobalLoading()
-
-  globalLoadingStart('')
+  const { loading } = useGlobalLoading()
+  loading.value = true
 
   onMounted(() => {
     setTimeout(() => {
-      globalLoadingFinish()
+      loading.value = false
     }, 1000)
   })
 
