@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: HPEGraphikBold;
+  src: url("@/assets/font/HPE-Graphik-Bold.otf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: HPEGraphikSemibold;
+  src: url("@/assets/font/HPE-Graphik-Semibold.otf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: HPEGraphikMedium;
+  src: url("@/assets/font/HPE-Graphik-Medium.otf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: HPEGraphikRegular;
+  src: url("@/assets/font/HPE-Graphik-Regular.otf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: HPEGraphikLight;
+  src: url("@/assets/font/HPE-Graphik-Light.otf");
+  font-display: swap;
+}
