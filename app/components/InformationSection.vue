@@ -9,6 +9,9 @@
   import cogSvg from '@/assets/svg/cog.svg?skipsvgo'
   import bankSvg from '@/assets/svg/bank.svg?skipsvgo'
   import ecoSvg from '@/assets/svg/eco.svg?skipsvgo'
+  import story1Pic from '@/assets/images/story-1.jpg'
+  import story2Pic from '@/assets/images/story-2.jpg'
+  import story3Pic from '@/assets/images/story-3.jpg'
 
   type ToolBoxItem = {
     id: string
@@ -76,6 +79,7 @@
     title: string
     description: string
     icon: FunctionalComponent | Component
+    image: string
     link: string
   }
 
@@ -85,6 +89,7 @@
       title: '製造業數位轉型實錄',
       description: '35 年老廠如何用 HPE 打造智慧工廠',
       icon: markRaw(cogSvg),
+      image: story1Pic,
       link: '#'
     },
     {
@@ -92,6 +97,7 @@
       title: '英國銀行混合雲轉型實錄',
       description: '個人化銀行服務的混合雲實踐之路',
       icon: markRaw(bankSvg),
+      image: story2Pic,
       link: '#'
     },
     {
@@ -99,17 +105,18 @@
       title: '環保 NGO 的資料奇蹟',
       description: '8 分鐘了解數據如何拯救濕地生態',
       icon: markRaw(ecoSvg),
+      image: story3Pic,
       link: '#'
     }
   ]
 </script>
 
 <template>
-  <section class="relative overflow-hidden pb-10 bg-[url(@/assets/images/bg-1.jpg)] bg-cover bg-top">
-    <div class="relative w-full h-full flex items-center justify-center z-20 pointer-events-none">
+  <section class="relative overflow-hidden bg-[url(@/assets/images/bg-1.jpg)] bg-cover bg-top">
+    <div class="relative w-full h-full flex items-center justify-center z-20">
       <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
       <div class="w-7/10 2xl:w-3/4 h-full px-12 border border-white border-dashed">
-        <div class="flex justify-center items-start gap-6 xl:gap-8 2xl:gap-10 mt-20">
+        <div class="flex justify-center items-start gap-6 xl:gap-8 2xl:gap-10 my-20">
           <div class="w-1/3">
             <div class="w-full">
               <h4
@@ -128,7 +135,7 @@
                   <div
                     v-for="item in toolBoxData"
                     :key="item.id"
-                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer pointer-events-auto transition-all duration-200"
+                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer transition-all duration-200"
                   >
                     <component :is="item.icon" class="inline-block w-6 h-6 mt-1 text-[#62E5F6]" />
                     <div class="w-full">
@@ -162,7 +169,7 @@
                   <div
                     v-for="item in techPackage"
                     :key="item.id"
-                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer pointer-events-auto transition-all duration-200"
+                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer transition-all duration-200"
                   >
                     <component :is="item.icon" class="inline-block w-6 h-6 mt-1 text-[#62E5F6]" />
                     <div class="w-full">
@@ -198,16 +205,16 @@
                   :href="story.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="basic-panel inline-block w-full bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl pointer-events-auto"
+                  class="basic-panel inline-block w-full bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl"
                 >
-                  <div class="relative aspect-4/3 w-full bg-gray-500/50 rounded-2xl">
+                  <img :src="story.image" class="relative aspect-3/2 w-full bg-gray-500/50 rounded-2xl">
                     <div
                       class="absolute left-2 top-2 w-7 h-7 p-1 aspect-square bg-linear-to-br from-[#00E0AF] to-[#62E5F6] rounded-lg flex justify-center items-center"
                     >
                       <component :is="story.icon" class="inline-block w-full h-full text-white" />
                     </div>
-                  </div>
-                  <div class="w-full py-2 px-3">
+                  </img>
+                  <div class="w-full p-3">
                     <h5 class="text-sm xl:text-base font-medium text-white HPEGraphikMedium line-clamp-1">
                       {{ story.title }}
                     </h5>

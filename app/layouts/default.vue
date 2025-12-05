@@ -24,6 +24,9 @@
     <AppLoading />
     <BasicModal />
     <slot />
+    <footer class="w-full bg-black flex justify-center items-center p-3">
+      <p class="text-white text-xs HPEGraphikRegular">{{ config.public.copyright }}</p>
+    </footer>
   </div>
 </template>
 

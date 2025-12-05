@@ -4,6 +4,7 @@
   import bannerBgRight from '@/assets/images/banner-bg-right.svg?skipsvgo'
   import bannerContent from '@/assets/images/banner-content.svg?skipsvgo'
   import bannerCircle from '@/assets/images/banner-circle.json'
+  import arrow from '@/assets/images/arrow.json'
 
   type Feature = {
     id: string
@@ -54,6 +55,7 @@
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-3/10 2xl:w-1/4 h-full"></div>
           <div class="w-7/10 2xl:w-3/4 px-6 xl:px-12 h-full">
+            <DigitalPattern class="mb-4" />
             <h1
               class="text-white text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-5 HPEGraphikBold leading-tight text-shadow-lg/30 tracking-wide"
             >
@@ -80,11 +82,18 @@
         <div class="w-7/10 2xl:w-3/4 h-full px-12 border border-white border-dashed">
           <MenuPanel />
           <div class="flex justify-center items-center my-15">
-            <h2
-              class="relative w-1/3 text-white text-xl lg:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-5 backdrop-blur-[2px]"
-            >
-              這些資料管理挑戰，<br />是不是讓您非常頭痛？
-            </h2>
+            <div class="w-1/3">
+              <h2
+                class="relative text-white text-xl lg:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-5 backdrop-blur-[2px]"
+              >
+                這些資料管理挑戰，<br />是不是讓您非常頭痛？
+              </h2>
+              <client-only>
+                <div class="w-3/4">
+                  <Vue3Lottie :animationData="arrow" direction="forward" />
+                </div>
+              </client-only>
+            </div>
             <div class="w-2/3 flex flex-col justify-center items-center gap-8 mt-10">
               <FeaturePanel v-for="(feature, index) in featureData" :key="index" :id="feature.id">
                 <template #title>{{ feature.title }}</template>
@@ -154,6 +163,7 @@
       border-radius: 16px;
       background: linear-gradient(180deg, #f7f7f7, rgba(#292d3a, 0));
       padding: 1px;
+      z-index: -1;
 
       // gradient border with mask
       mask:

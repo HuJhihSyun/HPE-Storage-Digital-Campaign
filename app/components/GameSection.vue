@@ -29,21 +29,25 @@
       description: 'GPU 使用率低落、AI 訓練速度慢、資料讀取成為瓶頸'
     }
   ]
+
+  const startGame = () => {
+    console.log('開始測驗')
+    // 在這裡加入開始測驗的邏輯
+  }
 </script>
 
 <template>
   <section
-    class="w-full relative overflow-hidden before:absolute before:w-full before:min-h-[13vw] before:top-0 before:left-0 before:bg-linear-to-b before:from-[#292D3A] before:to-transparent before:content-[''] before:z-10"
+    class="w-full relative overflow-hidden before:absolute before:w-full before:min-h-[13vw] before:top-0 before:left-0 before:bg-linear-to-b before:from-[#292D3A] before:to-transparent before:content-[''] before:z-10 after:absolute after:w-full after:min-h-[13vw] after:bottom-0 after:left-0 after:bg-linear-to-t after:from-[#3E4350] after:to-transparent after:content-[''] after:z-10"
   >
-    <!-- <video src="@/assets/images/wave-bg.mp4" width="100%" autoplay="true" controls="false" loop="true"></video> -->
     <video class="absolute top-0 left-0 w-full h-full object-cover z-[-1]" autoplay loop muted playsinline width="100%">
       <source src="@/assets/images/wave-bg.mp4" type="video/mp4" />
       您的瀏覽器不支援影片播放
     </video>
-    <div class="relative w-full h-full flex items-center justify-center z-20 pointer-events-none">
+    <div class="relative w-full h-full flex items-center justify-center z-20">
       <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
-      <div class="w-7/10 2xl:w-3/4 h-full px-12 pb-10 border border-white border-dashed">
-        <div class="w-full mt-20">
+      <div class="w-7/10 2xl:w-3/4 h-full px-12 py-20 border border-white border-dashed">
+        <div class="w-full">
           <div
             class="ai-heading inline-block pr-8 pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"
           >
@@ -69,6 +73,15 @@
             <template #secondText>{{ item.secondText }}</template>
             <template #description>{{ item.description }}</template>
           </GameSectionCard>
+        </div>
+        <div class="w-full flex justify-center items-center mt-10">
+          <button
+            type="button"
+            class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-20 py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+            @click="startGame"
+          >
+            <span class="text-lg">開始測驗</span>
+          </button>
         </div>
       </div>
     </div>
@@ -101,6 +114,26 @@
         linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
+    }
+  }
+
+  .submit-button {
+    &:before {
+      background: linear-gradient(90deg, #01a982, #00e0af 25%, #62e5f6 50%, #0070f8);
+      background-size: 300% auto; // 背景尺寸設定 3 倍大
+      transition: all 0.2s; // 漸變效果與時間
+    }
+
+    &:hover:before {
+      // 重新調整背景尺寸與定位
+      background-position: 100% 0;
+      background-size: 200% auto;
+    }
+
+    &:active:before {
+      background: linear-gradient(90deg, #01a982, #00e0af 25%, #0070f8 50%, #7764fc);
+      background-position: 100% 0;
+      background-size: 200% auto;
     }
   }
 </style>

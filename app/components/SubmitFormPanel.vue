@@ -437,6 +437,12 @@
       background-position: 100% 0;
       background-size: 200% auto;
     }
+
+    &:active:before {
+      background: linear-gradient(90deg, #01a982, #00e0af 25%, #0070f8 50%, #7764fc);
+      background-position: 100% 0;
+      background-size: 200% auto;
+    }
   }
 
   /* 卷軸整體 */
