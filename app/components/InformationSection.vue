@@ -1,0 +1,244 @@
+<script lang="ts" setup>
+  import type { Component, FunctionalComponent } from 'vue'
+  import buildingSvg from '@/assets/svg/building.svg?skipsvgo'
+  import zapSvg from '@/assets/svg/zap.svg?skipsvgo'
+  import shieldSvg from '@/assets/svg/shield.svg?skipsvgo'
+  import rocketSvg from '@/assets/svg/rocket.svg?skipsvgo'
+  import scrollTextSvg from '@/assets/svg/scroll-text.svg?skipsvgo'
+  import databaseSvg from '@/assets/svg/database.svg?skipsvgo'
+  import cogSvg from '@/assets/svg/cog.svg?skipsvgo'
+  import bankSvg from '@/assets/svg/bank.svg?skipsvgo'
+  import ecoSvg from '@/assets/svg/eco.svg?skipsvgo'
+
+  type ToolBoxItem = {
+    id: string
+    title: string
+    description: string
+    icon: FunctionalComponent | Component
+  }
+
+  const toolBoxData: ToolBoxItem[] = [
+    {
+      id: 'architecture-guide',
+      title: '企業儲存架構設計指南',
+      description: '系統工程師必備的架構規劃藍圖',
+      icon: markRaw(scrollTextSvg)
+    },
+    {
+      id: 'performance-benchmark',
+      title: '高效能儲存效能基準',
+      description: '數據說話的產品實力證明',
+      icon: markRaw(zapSvg)
+    },
+    {
+      id: 'data-protection-whitepaper',
+      title: '企業級資料安全解決方案',
+      description: '多層防護架構技術白皮書',
+      icon: markRaw(shieldSvg)
+    },
+    {
+      id: 'storage-for-ai-ml',
+      title: 'AI/ML 工作負載儲存最佳化',
+      description: '大數據時代的儲存加速方案',
+      icon: markRaw(rocketSvg)
+    },
+    {
+      id: 'digital-transformation-storage-strategy',
+      title: '企業數位轉型儲存策略',
+      description: '傳統 IT 向現代化架構轉型指南',
+      icon: markRaw(buildingSvg)
+    },
+    {
+      id: 'data-modernization-guide',
+      title: '資料現代化轉型指南',
+      description: '結構化資料升級的完整策略',
+      icon: markRaw(databaseSvg)
+    }
+  ]
+
+  const techPackage: ToolBoxItem[] = [
+    {
+      id: 'storage-optimization',
+      title: '創新儲存 9 招',
+      description: '2 分鐘掌握未來儲存趨勢',
+      icon: markRaw(databaseSvg)
+    },
+    {
+      id: 'cyber-resilience',
+      title: '資安防護寶典',
+      description: '4 分鐘建立勒索病毒防線',
+      icon: markRaw(shieldSvg)
+    }
+  ]
+
+  type SuccessStory = {
+    id: string
+    title: string
+    description: string
+    icon: FunctionalComponent | Component
+    link: string
+  }
+
+  const successStories: SuccessStory[] = [
+    {
+      id: 'story-1',
+      title: '製造業數位轉型實錄',
+      description: '35 年老廠如何用 HPE 打造智慧工廠',
+      icon: markRaw(cogSvg),
+      link: '#'
+    },
+    {
+      id: 'story-2',
+      title: '英國銀行混合雲轉型實錄',
+      description: '個人化銀行服務的混合雲實踐之路',
+      icon: markRaw(bankSvg),
+      link: '#'
+    },
+    {
+      id: 'story-3',
+      title: '環保 NGO 的資料奇蹟',
+      description: '8 分鐘了解數據如何拯救濕地生態',
+      icon: markRaw(ecoSvg),
+      link: '#'
+    }
+  ]
+</script>
+
+<template>
+  <section class="relative overflow-hidden pb-10 bg-[url(@/assets/images/bg-1.jpg)] bg-cover bg-top">
+    <div class="relative w-full h-full flex items-center justify-center z-20 pointer-events-none">
+      <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
+      <div class="w-7/10 2xl:w-3/4 h-full px-12 border border-white border-dashed">
+        <div class="flex justify-center items-start gap-6 xl:gap-8 2xl:gap-10 mt-20">
+          <div class="w-1/3">
+            <div class="w-full">
+              <h4
+                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
+              >
+                實戰工具箱
+                <span
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  >讓決策更簡單</span
+                >
+              </h4>
+              <div
+                class="basic-panel w-full mt-4 px-4 py-1 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center"
+              >
+                <div class="w-full flex flex-col divide-gray-400 divide-y">
+                  <div
+                    v-for="item in toolBoxData"
+                    :key="item.id"
+                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer pointer-events-auto transition-all duration-200"
+                  >
+                    <component :is="item.icon" class="inline-block w-6 h-6 mt-1 text-[#62E5F6]" />
+                    <div class="w-full">
+                      <h5
+                        class="text-base xl:text-lg font-medium bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] HPEGraphikMedium whitespace-nowrap"
+                      >
+                        {{ item.title }}
+                      </h5>
+                      <h6 class="text-xs xl:text-sm font-light text-white HPEGraphikRegular">
+                        {{ item.description }}
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full mt-8">
+              <h4
+                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
+              >
+                技術知識包
+                <span
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  >複雜問題簡單說</span
+                >
+              </h4>
+              <div
+                class="basic-panel w-full mt-4 px-4 py-1 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center"
+              >
+                <div class="w-full flex flex-col divide-gray-400 divide-y">
+                  <div
+                    v-for="item in techPackage"
+                    :key="item.id"
+                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer pointer-events-auto transition-all duration-200"
+                  >
+                    <component :is="item.icon" class="inline-block w-6 h-6 mt-1 text-[#62E5F6]" />
+                    <div class="w-full">
+                      <h5
+                        class="text-base xl:text-lg font-medium bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] HPEGraphikMedium whitespace-nowrap"
+                      >
+                        {{ item.title }}
+                      </h5>
+                      <h6 class="text-xs xl:text-sm font-light text-white HPEGraphikRegular">
+                        {{ item.description }}
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-2/3">
+            <div class="w-full">
+              <h4
+                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
+              >
+                成功故事櫥窗
+                <span
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  >同行都在這樣做</span
+                >
+              </h4>
+              <div class="grid grid-cols-3 mt-4 gap-2">
+                <a
+                  v-for="story in successStories"
+                  :key="story.id"
+                  :href="story.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="basic-panel inline-block w-full bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl pointer-events-auto"
+                >
+                  <div class="relative aspect-4/3 w-full bg-gray-500/50 rounded-2xl">
+                    <div
+                      class="absolute left-2 top-2 w-7 h-7 p-1 aspect-square bg-linear-to-br from-[#00E0AF] to-[#62E5F6] rounded-lg flex justify-center items-center"
+                    >
+                      <component :is="story.icon" class="inline-block w-full h-full text-white" />
+                    </div>
+                  </div>
+                  <div class="w-full py-2 px-3">
+                    <h5 class="text-sm xl:text-base font-medium text-white HPEGraphikMedium line-clamp-1">
+                      {{ story.title }}
+                    </h5>
+                    <h6 class="text-xs xl:text-sm font-light text-white HPEGraphikRegular line-clamp-1">
+                      {{ story.description }}
+                    </h6>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="w-full mt-8">
+              <h4
+                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
+              >
+                影音說書人
+                <span
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  >複雜技術輕鬆看</span
+                >
+              </h4>
+              <div
+                class="relative mt-4 w-full rounded-2xl border border-[#05CC93] aspect-160/91 p-1.5 flex justify-center items-center before:absolute before:content-[''] before:w-15 before:h-1 before:rounded-full before:bg-linear-to-r before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-0.5 before:right-1/10 after:absolute after:content-[''] after:w-20 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:bottom-0 after:translate-y-0.5 after:left-1/10"
+              >
+                <div class="w-full aspect-video rounded-xl overflow-hidden">
+                  <iframe class="aspect-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

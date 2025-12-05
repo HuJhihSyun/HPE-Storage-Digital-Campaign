@@ -5,7 +5,15 @@
   import bannerContent from '@/assets/images/banner-content.svg?skipsvgo'
   import bannerCircle from '@/assets/images/banner-circle.json'
 
-  const featureData = [
+  type Feature = {
+    id: string
+    title: string
+    subtitle: string
+    description: string
+    content: string
+  }
+
+  const featureData: Feature[] = [
     {
       id: 'security',
       title: '資安防護缺口',
@@ -92,37 +100,7 @@
 
     <GameSection />
 
-    <section class="relative overflow-hidden pb-10 bg-[url(@/assets/images/bg-1.jpg)] bg-cover bg-top">
-      <div class="relative w-full h-full flex items-center justify-center z-20 pointer-events-none">
-        <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
-        <div class="w-7/10 2xl:w-3/4 h-full px-12 border border-white border-dashed">
-          <div class="flex justify-center items-start mt-20">
-            <div class="w-1/3">
-              <h4
-                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
-              >
-                實戰工具箱
-                <span
-                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
-                  >讓決策更簡單</span
-                >
-              </h4>
-            </div>
-            <div class="w-2/3">
-              <h4
-                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
-              >
-                成功故事櫥窗
-                <span
-                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
-                  >同行都在這樣做</span
-                >
-              </h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <InformationSection />
 
     <ClientOnly>
       <SubmitFormPanel />
@@ -145,6 +123,36 @@
       right: 0;
       border-radius: 16px;
       background: linear-gradient(90deg, #00e0af, rgba(#00e0af, 0));
+      padding: 1px;
+
+      // gradient border with mask
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+  }
+</style>
+
+<style lang="scss">
+  .basic-panel {
+    position: relative;
+    outline: none;
+    border: none;
+
+    &:before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f7f7f7, rgba(#292d3a, 0));
       padding: 1px;
 
       // gradient border with mask

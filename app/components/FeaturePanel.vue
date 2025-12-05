@@ -14,7 +14,7 @@
 
 <template>
   <div
-    class="feature-panel w-full px-6 xl:px-8 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center"
+    class="basic-panel w-full px-6 xl:px-8 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center"
   >
     <div class="w-1/4 -translate-y-4">
       <client-only>
@@ -43,33 +43,3 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .feature-panel {
-    position: relative;
-    outline: none;
-    border: none;
-
-    &:before {
-      position: absolute;
-      content: '';
-      bottom: 0;
-      top: 0;
-      left: 0;
-      right: 0;
-      border-radius: 16px;
-      background: linear-gradient(180deg, #f7f7f7, #292d3a);
-      padding: 1px;
-
-      // gradient border with mask
-      mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-  }
-</style>
