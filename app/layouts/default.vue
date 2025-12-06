@@ -1,13 +1,6 @@
 <script setup lang="ts">
   import { useGlobalLoading } from '@/composables/useGlobalLoading'
   const { loading } = useGlobalLoading()
-  loading.value = true
-
-  onMounted(() => {
-    setTimeout(() => {
-      loading.value = false
-    }, 1000)
-  })
 
   const config = useRuntimeConfig()
 
@@ -17,12 +10,25 @@
     ogTitle: config.public.title,
     ogDescription: config.public.description
   })
+
+  const isInitial = ref(true)
+
+  onMounted(() => {
+    isInitial.value = false
+  })
 </script>
 
 <template>
   <div>
-    <AppLoading />
-    <BasicModal />
+    <transition name="fade" mode="out-in">
+      <InitialLoading v-if="isInitial" />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <AppLoading />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <BasicModal />
+    </transition>
     <slot />
     <footer class="w-full bg-black flex justify-center items-center p-3">
       <p class="text-white text-xs HPEGraphikRegular">{{ config.public.copyright }}</p>
@@ -63,5 +69,15 @@
   .HPEGraphikLight {
     font-family: HPEGraphikLight, '微軟正黑體', sans-serif;
     font-weight: 300;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>
