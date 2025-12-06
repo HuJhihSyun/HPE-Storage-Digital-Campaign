@@ -1,38 +1,98 @@
 <script lang="ts" setup>
-  const featureData = [
+  type CardInfo = {
+    title: string
+    firstText: string
+    secondText: string
+    subtitle: string
+    description: string
+    optionId: string
+  }
+
+  const cardData: CardInfo[] = [
     {
       title: '資料管理混亂',
       firstText: 'Data',
       secondText: 'Data',
       subtitle: '資料散落各處，治理效率下降',
-      description: '企業資料散布在不同系統、找不到關鍵資訊、備份時間冗長'
+      description: '企業資料散布在不同系統、找不到關鍵資訊、備份時間冗長',
+      optionId: 'A'
     },
     {
       title: '資安防護缺口',
       firstText: 'Cyber',
       secondText: 'Resilience',
       subtitle: '勒索病毒威脅加劇，沒有 NIST 2.0 架構造成現有防護措施漏洞頻現',
-      description: '擔心勒索病毒攻擊、確保資料安全合規、快速災難復原'
+      description: '擔心勒索病毒攻擊、確保資料安全合規、快速災難復原',
+      optionId: 'B'
     },
     {
       title: '虛擬化成本暴增',
       firstText: 'VMware',
       secondText: 'Alternative',
       subtitle: 'VMware 授權費暴漲，IT 預算吃緊難以為繼',
-      description: 'VMware 授權費暴漲、尋找高效能替代方案、控制總擁有成本'
+      description: 'VMware 授權費暴漲、尋找高效能替代方案、控制總擁有成本',
+      optionId: 'C'
     },
     {
       title: 'AI 效能瓶頸',
       firstText: 'AI',
       secondText: 'AI',
       subtitle: 'AI 專案進展緩慢，昂貴 GPU 使用率低落',
-      description: 'GPU 使用率低落、AI 訓練速度慢、資料讀取成為瓶頸'
+      description: 'GPU 使用率低落、AI 訓練速度慢、資料讀取成為瓶頸',
+      optionId: 'D'
     }
   ]
 
+  enum GameStep {
+    Initial = 0,
+    Started = 1,
+    CardReady = 2,
+    SelectFinish = 3,
+    Loading = 4,
+    Completed = 5
+  }
+
+  const gameStep = ref<GameStep>(GameStep.Initial)
+  const cardStep = ref<number>(-1)
+  let intervalId: number | undefined
+
   const startGame = () => {
-    console.log('開始測驗')
-    // 在這裡加入開始測驗的邏輯
+    gameStep.value = GameStep.Started
+  }
+
+  watch(gameStep, () => {
+    if (gameStep.value === GameStep.Started) {
+      intervalId = setInterval(() => {
+        if (cardStep.value < 4) {
+          cardStep.value += 1
+        } else {
+          gameStep.value = GameStep.CardReady
+          if (intervalId) clearInterval(intervalId)
+          cardStep.value = 0
+        }
+      }, 200)
+    }
+  })
+
+  const cardSelected = reactive<string[]>([])
+  const selectCard = (optionId: string) => {
+    if (gameStep.value !== GameStep.CardReady) return
+    if (!cardSelected.includes(optionId)) {
+      cardSelected.push(optionId)
+    } else {
+      const index = cardSelected.indexOf(optionId)
+      if (index > -1) {
+        cardSelected.splice(index, 1)
+      }
+    }
+  }
+
+  const optionConfirm = () => {
+    if (cardSelected.length === 0) {
+      alert('請至少選擇一張卡片')
+      return
+    }
+    gameStep.value = GameStep.SelectFinish
   }
 </script>
 
@@ -64,9 +124,17 @@
             </h5>
           </div>
         </div>
-        <div class="mt-10 grid grid-cols-4 gap-4">
+        <div class="mt-15 grid grid-cols-4 gap-4">
           <!-- 卡片範例（複製 4 次） -->
-          <GameSectionCard v-for="item in featureData" :key="item.firstText">
+          <GameSectionCard
+            v-for="(item, index) in cardData"
+            :key="item.firstText"
+            :index="index"
+            :game-step="gameStep"
+            :card-step="cardStep"
+            :card-selected="cardSelected"
+            @click="selectCard(item.optionId)"
+          >
             <template #title>{{ item.title }}</template>
             <template #subtitle>{{ item.subtitle }}</template>
             <template #firstText>{{ item.firstText }}</template>
@@ -74,14 +142,36 @@
             <template #description>{{ item.description }}</template>
           </GameSectionCard>
         </div>
-        <div class="w-full flex justify-center items-center mt-10">
-          <button
-            type="button"
-            class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-20 py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
-            @click="startGame"
-          >
-            <span class="text-lg">開始測驗</span>
-          </button>
+
+        <div class="w-full flex justify-center items-center mt-15">
+          <template v-if="gameStep <= GameStep.Started">
+            <button
+              type="button"
+              class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-20 py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+              :class="{ 'pointer-events-none disabled': gameStep === GameStep.Started }"
+              @click="startGame"
+            >
+              <span class="text-lg">開始測驗</span>
+            </button>
+          </template>
+          <transition name="fade" mode="out-in">
+            <template v-if="gameStep === GameStep.CardReady">
+              <div
+                class="flex justify-center items-center gap-2 bg-linear-to-br from-[#0070F8]/50 via-[#292D3A]/50 to-[#292D3A]/50 pr-2 pl-6 py-2 rounded-full"
+              >
+                <h5 class="text-base text-gray-200">
+                  請點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選）
+                </h5>
+                <button
+                  type="button"
+                  class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-6 py-1 z-10 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+                  @click="optionConfirm"
+                >
+                  <span class="text-lg">確認</span>
+                </button>
+              </div>
+            </template>
+          </transition>
         </div>
       </div>
     </div>
@@ -135,5 +225,20 @@
       background-position: 100% 0;
       background-size: 200% auto;
     }
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.2s;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>

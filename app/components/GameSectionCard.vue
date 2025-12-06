@@ -1,8 +1,47 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  interface cardProps {
+    index: number
+    gameStep: number
+    cardStep: number
+    cardSelected?: string[]
+  }
+  const props = withDefaults(defineProps<cardProps>(), {
+    index: 0,
+    gameStep: 0,
+    cardStep: 0,
+    cardSelected: () => []
+  })
+
+  const indexMap = ['A', 'B', 'C', 'D']
+
+  const isCardSelected = computed(() => {
+    const cardIndex = indexMap[props.index]
+    return cardIndex !== undefined && props.cardSelected.includes(cardIndex)
+  })
+</script>
 
 <template>
-  <div class="card-wrap pointer-events-auto">
-    <div class="card w-full relative cursor-pointer" data-index="1" tabindex="0" role="button" aria-pressed="false">
+  <div
+    class="card-wrap rounded-xl overflow-hidden group transition-all duration-200"
+    :class="[
+      gameStep === 0 ? `card-wrap-${index}` : '',
+      {
+        'hover:shadow-lg hover:shadow-cyan-500/80 hover:-translate-y-1': gameStep === 2 && !isCardSelected,
+        'shadow-lg shadow-cyan-200/90 -translate-y-2 scale-[1.02]': isCardSelected
+      }
+    ]"
+  >
+    <div
+      class="card w-full relative cursor-pointer"
+      :class="{
+        'group-hover:rotate-y-180': gameStep === 0,
+        'rotate-y-180': (cardStep >= index && gameStep === 1) || gameStep === 2 || (gameStep === 3 && isCardSelected)
+      }"
+      data-index="1"
+      tabindex="0"
+      role="button"
+      aria-pressed="false"
+    >
       <div class="face front">
         <img src="@/assets/images/card-cover.jpg" alt="cover" width="100%" />
       </div>
@@ -79,6 +118,19 @@
   /* 卡片外框 */
   .card-wrap {
     perspective: 1200px; /* 3D 視角 */
+
+    &-0 {
+      transform: translate(90%, 10%) rotate(-10deg);
+    }
+    &-1 {
+      transform: translate(30%) rotate(-5deg);
+    }
+    &-2 {
+      transform: translate(-30%) rotate(5deg);
+    }
+    &-3 {
+      transform: translate(-90%, 10%) rotate(10deg);
+    }
   }
 
   .card {
@@ -108,19 +160,14 @@
   }
 
   .front {
-    transform: rotateY(180deg);
+    // transform: rotateY(180deg);
   }
 
   .back {
     position: absolute;
     background: linear-gradient(90deg, #024c39, #01a982);
-    // transform: rotateY(180deg);
+    transform: rotateY(180deg);
   }
-
-  /* hover 時輕微翻牌（滑鼠在卡片上） */
-  // .card-wrap:hover .card {
-  //   transform: rotateY(180deg);
-  // }
 
   /* 當加入 .is-open（點擊）時，卡片會固定翻牌並攤開（放大並展開更多內容） */
   .card.is-open {
