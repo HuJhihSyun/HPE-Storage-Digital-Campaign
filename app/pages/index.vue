@@ -117,7 +117,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .banner-heading {
     position: relative;
     outline: none;
@@ -145,9 +145,7 @@
       mask-composite: exclude;
     }
   }
-</style>
 
-<style lang="scss">
   .basic-panel {
     position: relative;
     outline: none;

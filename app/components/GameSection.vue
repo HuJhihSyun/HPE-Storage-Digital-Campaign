@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+  import LoaderSvg from '@/assets/svg/loader.svg?skipsvgo'
+
   type CardInfo = {
     title: string
     firstText: string
@@ -55,9 +57,19 @@
   const gameStep = ref<GameStep>(GameStep.Initial)
   const cardStep = ref<number>(-1)
   let intervalId: number | undefined
+  const loadingPercent = ref<number>(0)
+  const loadingTextArray = ref<string[]>(['正在分析您的儲存環境...', '找出潛在風險點...'])
 
   const startGame = () => {
     gameStep.value = GameStep.Started
+  }
+
+  const restartGame = () => {
+    gameStep.value = GameStep.Initial
+    cardStep.value = -1
+    loadingPercent.value = 0
+    cardSelected.splice(0, cardSelected.length)
+    if (intervalId) clearInterval(intervalId)
   }
 
   watch(gameStep, () => {
@@ -72,9 +84,23 @@
         }
       }, 200)
     }
+
+    if (gameStep.value === GameStep.Loading) {
+      let percent = 0
+      intervalId = setInterval(() => {
+        if (percent < 100) {
+          percent += 1
+          loadingPercent.value = percent
+        } else {
+          gameStep.value = GameStep.Completed
+          if (intervalId) clearInterval(intervalId)
+        }
+      }, 30)
+    }
   })
 
   const cardSelected = reactive<string[]>([])
+
   const selectCard = (optionId: string) => {
     if (gameStep.value !== GameStep.CardReady) return
     if (!cardSelected.includes(optionId)) {
@@ -93,6 +119,9 @@
       return
     }
     gameStep.value = GameStep.SelectFinish
+    setTimeout(() => {
+      gameStep.value = GameStep.Loading
+    }, 500)
   }
 </script>
 
@@ -124,24 +153,53 @@
             </h5>
           </div>
         </div>
-        <div class="mt-15 grid grid-cols-4 gap-4">
-          <!-- 卡片範例（複製 4 次） -->
-          <GameSectionCard
-            v-for="(item, index) in cardData"
-            :key="item.firstText"
-            :index="index"
-            :game-step="gameStep"
-            :card-step="cardStep"
-            :card-selected="cardSelected"
-            @click="selectCard(item.optionId)"
+
+        <transition name="fade" mode="out-in">
+          <div v-if="gameStep < GameStep.Loading" class="mt-15 grid grid-cols-4 gap-4">
+            <!-- 卡片範例（複製 4 次） -->
+            <GameSectionCard
+              v-for="(item, index) in cardData"
+              :key="item.firstText"
+              :index="index"
+              :game-step="gameStep"
+              :card-step="cardStep"
+              :card-selected="cardSelected"
+              @click="selectCard(item.optionId)"
+            >
+              <template #title>{{ item.title }}</template>
+              <template #subtitle>{{ item.subtitle }}</template>
+              <template #firstText>{{ item.firstText }}</template>
+              <template #secondText>{{ item.secondText }}</template>
+              <template #description>{{ item.description }}</template>
+            </GameSectionCard>
+          </div>
+        </transition>
+        <transition name="fade" mode="out-in">
+          <div
+            v-if="gameStep === GameStep.Loading"
+            class="w-full flex flex-col justify-center items-center py-[8vw] mt-15"
           >
-            <template #title>{{ item.title }}</template>
-            <template #subtitle>{{ item.subtitle }}</template>
-            <template #firstText>{{ item.firstText }}</template>
-            <template #secondText>{{ item.secondText }}</template>
-            <template #description>{{ item.description }}</template>
-          </GameSectionCard>
-        </div>
+            <h6 class="text-white text-lg xl:text-xl flex justify-center items-center gap-2 tracking-wide">
+              <LoaderSvg class="w-6 h-6 xl:w-8 xl:h-8 animate-spin" />
+              {{ loadingTextArray[Math.floor(loadingPercent / 50)] }}
+            </h6>
+            <div
+              class="w-2/5 h-6 mt-6 rounded-full bg-linear-to-tr from-[#0070F8]/70 via-[#292D3A]/50 to-[#292D3A]/50 p-1.5"
+            >
+              <div class="relative w-full h-full">
+                <div
+                  class="absolute left-0 h-full rounded-full bg-linear-to-b to-[#007d60] via-[#8cffe6] from-[#00E0AF] animate-loadProgress"
+                  :style="`width: ${loadingPercent}%`"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </transition>
+        <transition name="fade" mode="out-in">
+          <template v-if="gameStep === GameStep.Completed">
+            <GameAnswer :answer="'A1'" />
+          </template>
+        </transition>
 
         <div class="w-full flex justify-center items-center mt-15">
           <template v-if="gameStep <= GameStep.Started">
@@ -160,16 +218,33 @@
                 class="flex justify-center items-center gap-2 bg-linear-to-br from-[#0070F8]/50 via-[#292D3A]/50 to-[#292D3A]/50 pr-2 pl-6 py-2 rounded-full"
               >
                 <h5 class="text-base text-gray-200">
-                  請點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選）
+                  <template v-if="!cardSelected.length">
+                    請點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選）
+                  </template>
+                  <template v-else-if="cardSelected.length"
+                    >已選擇 <span class="HPEGraphikRegular">{{ cardSelected.length }}</span> 張卡片
+                  </template>
                 </h5>
                 <button
                   type="button"
                   class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-6 py-1 z-10 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+                  :class="{ 'pointer-events-none disabled': cardSelected.length === 0 }"
                   @click="optionConfirm"
                 >
                   <span class="text-lg">確認</span>
                 </button>
               </div>
+            </template>
+          </transition>
+          <transition name="fade" mode="out-in">
+            <template v-if="gameStep === GameStep.Completed">
+              <button
+                type="button"
+                class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-20 py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+                @click="restartGame"
+              >
+                <span class="text-lg">重新測驗</span>
+              </button>
             </template>
           </transition>
         </div>
