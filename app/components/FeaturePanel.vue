@@ -29,7 +29,7 @@
         </div>
       </client-only>
     </div>
-    <div class="w-full">
+    <div class="w-full mt-2">
       <h3
         class="text-xl xl:text-2xl font-semibold bg-clip-text text-transparent bg-linear-to-bl from-[#0070F8] to-[#62E5F6] HPEGraphikSemiBold"
       >
@@ -37,9 +37,10 @@
           ><slot name="subtitle"
         /></span>
       </h3>
-      <!-- <h4 class="text-xs text-[#62E5F6] HPEGraphikRegular"><slot name="subtitle" /></h4> -->
-      <h4 class="mt-1 text-base xl:text-lg text-white HPEGraphikRegular"><slot name="description" /></h4>
-      <p class="mt-2 xl:text-sm text-gray-300 HPEGraphikRegular"><slot name="content" /></p>
+      <h4 class="mt-1 text-base xl:text-lg text-white HPEGraphikRegular mb-1 pb-1 border-b border-gray-500">
+        <slot name="description" />
+      </h4>
+      <p class="mt-2 text-sm xl:text-sm text-gray-300 HPEGraphikRegular"><slot name="content" /></p>
     </div>
   </div>
 </template>

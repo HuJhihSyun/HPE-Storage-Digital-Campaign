@@ -7,8 +7,7 @@
 
   const menuItems: MenuItems[] = [
     { name: '互動遊戲', link: '#', id: 'game' },
-    { name: '抽獎好禮', link: '#', id: 'lottery' },
-    { name: '注意事項', link: '#', id: 'notice' }
+    { name: '抽獎好禮', link: '#', id: 'lottery' }
   ]
 
   // 活動開始時間 2025 年 12 月 29 日 12:00
@@ -47,7 +46,7 @@
 
 <template>
   <nav
-    class="inline-block bg-linear-to-bl from-white/10 to-white/30 border border-white rounded-full py-4 px-4 lg:px-6 xl:px-10 backdrop-blur-sm"
+    class="inline-block bg-linear-to-bl from-white/10 to-white/30 border border-white rounded-full py-2 lg:py-4 px-4 lg:px-6 xl:px-10 backdrop-blur-sm"
   >
     <ul class="flex justify-center items-center text-base xl:text-lg divide-x divide-white gap-4">
       <li

@@ -239,11 +239,11 @@
 
 <template>
   <aside
-    class="submit-form-panel fixed top-2 left-2 lg:top-4 lg:left-4 2xl:top-4 2xl:left-4 py-4 px-5 bg-linear-to-br from-white/20 to-white/40 backdrop-blur-sm rounded-2xl pointer-events-none z-50"
+    class="submit-form-panel fixed top-2 left-2 lg:top-4 lg:left-4 2xl:top-4 2xl:left-4 py-4 px-3 lg:px-5 bg-linear-to-br from-white/20 to-white/40 backdrop-blur-sm rounded-2xl pointer-events-none z-50"
     :style="{ width: panelWidth + 'px', height: panelHeight + 'px' }"
   >
     <div class="w-full pt-2 pb-5 border-b border-b-white">
-      <LogoSvg class="w-40" />
+      <LogoSvg class="w-36 lg:w-40" />
     </div>
     <div class="w-full mt-4">
       <h4 class="text-white font-bold text-lg lg:text-xl text-shadow-lg/10">填寫資料，立即下載攻略</h4>

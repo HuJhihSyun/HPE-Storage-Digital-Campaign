@@ -54,7 +54,7 @@
       <div class="absolute w-full min-h-[13vw] bottom-0 left-0 bg-linear-to-t from-[#292D3A] to-transparent z-30">
         <div class="w-full h-full flex items-center justify-center">
           <div class="w-3/10 2xl:w-1/4 h-full"></div>
-          <div class="w-7/10 2xl:w-3/4 px-6 xl:px-12 h-full">
+          <div class="w-7/10 2xl:w-3/4 px-6 lg:px-8 xl:px-12 h-full">
             <DigitalPattern class="mb-4" />
             <h1
               class="text-white text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-5 HPEGraphikBold leading-tight text-shadow-lg/30 tracking-wide"
@@ -78,23 +78,23 @@
         <DotCanvasBackground class="absolute h-full z-10" />
       </ClientOnly>
       <div class="relative w-full h-full flex items-center justify-center z-20 pointer-events-none">
-        <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
-        <div class="w-7/10 2xl:w-3/4 h-full px-12 border border-white border-dashed">
+        <div class="w-3/10 2xl:w-1/4 h-full"></div>
+        <div class="w-7/10 2xl:w-3/4 h-full px-6 lg:px-8 xl:px-12">
           <MenuPanel />
-          <div class="flex justify-center items-center my-15">
-            <div class="w-1/3">
+          <div class="flex flex-col lg:flex-row justify-center items-center my-15">
+            <div class="w-full lg:w-1/3">
               <h2
                 class="relative text-white text-xl lg:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-5 backdrop-blur-[2px]"
               >
-                這些資料管理挑戰，<br />是不是讓您非常頭痛？
+                這些資料管理挑戰，<br class="hidden lg:block" />是不是讓您非常頭痛？
               </h2>
               <client-only>
-                <div class="w-3/4">
+                <div class="w-3/4 hidden lg:block">
                   <Vue3Lottie :animationData="arrow" direction="forward" />
                 </div>
               </client-only>
             </div>
-            <div class="w-2/3 flex flex-col justify-center items-center gap-8 mt-10">
+            <div class="w-full lg:w-2/3 flex flex-col justify-center items-center gap-8 mt-10">
               <FeaturePanel v-for="(feature, index) in featureData" :key="index" :id="feature.id">
                 <template #title>{{ feature.title }}</template>
                 <template #subtitle>{{ feature.subtitle }}</template>

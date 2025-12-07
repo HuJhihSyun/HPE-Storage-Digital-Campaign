@@ -121,15 +121,31 @@
 
     &-0 {
       transform: translate(90%, 10%) rotate(-10deg);
+
+      @media screen and (max-width: 991px) {
+        transform: none;
+      }
     }
     &-1 {
       transform: translate(30%) rotate(-5deg);
+
+      @media screen and (max-width: 991px) {
+        transform: none;
+      }
     }
     &-2 {
       transform: translate(-30%) rotate(5deg);
+
+      @media screen and (max-width: 991px) {
+        transform: none;
+      }
     }
     &-3 {
       transform: translate(-90%, 10%) rotate(10deg);
+
+      @media screen and (max-width: 991px) {
+        transform: none;
+      }
     }
   }
 

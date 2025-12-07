@@ -135,12 +135,12 @@
     </video>
     <div class="relative w-full h-full flex items-center justify-center z-20">
       <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
-      <div class="w-7/10 2xl:w-3/4 h-full px-12 py-20 border border-white border-dashed">
+      <div class="w-7/10 2xl:w-3/4 h-full px-6 lg:px-8 xl:px-12 py-20 border border-white border-dashed">
         <div class="w-full">
           <div
-            class="ai-heading inline-block pr-8 pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"
+            class="ai-heading inline-block pr-8 pl-40 lg:pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"
           >
-            <img src="@/assets/images/robot.png" alt="robot" width="90" class="absolute left-5 bottom-0" />
+            <img src="@/assets/images/robot.png" alt="robot" class="absolute left-5 bottom-0 w-30 lg:w-[90px]" />
             <h2 class="text-white text-xl lg:text-2xl 2xl:text-3xl font-bold">
               <span
                 class="text-3xl lg:text-4xl 2xl:text-5xl bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] HPEGraphikBold"
@@ -148,14 +148,14 @@
               >
               秒為您剖析 <span class="HPEGraphikBold">HPE</span> 將如何解決您企業正面臨的資料韌性挑戰
             </h2>
-            <h5 class="text-lg text-white mt-1 ml-1">
+            <h5 class="text-sm md:text-base lg:text-lg text-[#E6E8E9] mt-1 ml-1">
               點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選），根據選擇組合，跳出對應診斷結果
             </h5>
           </div>
         </div>
 
         <transition name="fade" mode="out-in">
-          <div v-if="gameStep < GameStep.Loading" class="mt-15 grid grid-cols-4 gap-4">
+          <div v-if="gameStep < GameStep.Loading" class="mt-15 grid grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- 卡片範例（複製 4 次） -->
             <GameSectionCard
               v-for="(item, index) in cardData"
@@ -267,7 +267,7 @@
       left: 0;
       right: 0;
       border-radius: 16px;
-      background: linear-gradient(90deg, #00e0af, #292d3a);
+      background: linear-gradient(90deg, #00e0af, rgba(#00e0af, 0));
       padding: 1px;
 
       // gradient border with mask

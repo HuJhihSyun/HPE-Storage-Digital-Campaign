@@ -115,29 +115,29 @@
   <section class="relative overflow-hidden bg-[url(@/assets/images/bg-1.jpg)] bg-cover bg-top">
     <div class="relative w-full h-full flex items-center justify-center z-20">
       <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
-      <div class="w-7/10 2xl:w-3/4 h-full px-12 border border-white border-dashed">
-        <div class="flex justify-center items-start gap-6 xl:gap-8 2xl:gap-10 my-20">
-          <div class="w-1/3">
+      <div class="w-7/10 2xl:w-3/4 h-full px-6 lg:px-8 xl:px-12 border border-white border-dashed">
+        <div class="flex flex-col lg:flex-row justify-center items-start gap-8 2xl:gap-10 my-10 lg:my-20">
+          <div class="w-full lg:w-1/3">
             <div class="w-full">
               <h4
                 class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
               >
                 實戰工具箱
                 <span
-                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5 whitespace-nowrap"
                   >讓決策更簡單</span
                 >
               </h4>
               <div
-                class="basic-panel w-full mt-4 px-4 py-1 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center"
+                class="basic-panel w-full mt-4 lg:px-4 lg:py-1 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center overflow-hidden"
               >
-                <div class="w-full flex flex-col divide-gray-400 divide-y">
+                <div class="w-full grid grid-cols-2 lg:flex lg:flex-col lg:divide-gray-400 lg:divide-y">
                   <div
                     v-for="item in toolBoxData"
                     :key="item.id"
-                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer transition-all duration-200"
+                    class="flex justify-center items-start pl-4 lg:pl-0 py-3 gap-2 hover:bg-white/20 hover:pl-5 lg:hover:px-2 cursor-pointer transition-all duration-200"
                   >
-                    <component :is="item.icon" class="inline-block w-6 h-6 mt-1 text-[#62E5F6]" />
+                    <component :is="item.icon" class="inline-block min-w-6 w-6 h-6 mt-1 text-[#62E5F6]" />
                     <div class="w-full">
                       <h5
                         class="text-base xl:text-lg font-medium bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] HPEGraphikMedium whitespace-nowrap"
@@ -158,7 +158,7 @@
               >
                 技術知識包
                 <span
-                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5 whitespace-nowrap"
                   >複雜問題簡單說</span
                 >
               </h4>
@@ -187,14 +187,14 @@
               </div>
             </div>
           </div>
-          <div class="w-2/3">
+          <div class="w-full lg:w-2/3">
             <div class="w-full">
               <h4
                 class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
               >
                 成功故事櫥窗
                 <span
-                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5 whitespace-nowrap"
                   >同行都在這樣做</span
                 >
               </h4>
@@ -231,7 +231,7 @@
               >
                 影音說書人
                 <span
-                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5"
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5 whitespace-nowrap"
                   >複雜技術輕鬆看</span
                 >
               </h4>
