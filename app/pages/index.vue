@@ -5,6 +5,10 @@
   import bannerContent from '@/assets/images/banner-content.svg?skipsvgo'
   import bannerCircle from '@/assets/images/banner-circle.json'
   import arrow from '@/assets/images/arrow.json'
+  import LogoSvg from '@/assets/svg/logo-w-pure.svg?skipsvgo'
+
+  import { useWindowSize } from '@vueuse/core'
+  const { width } = useWindowSize()
 
   type Feature = {
     id: string
@@ -37,24 +41,47 @@
       content: 'GPU 使用率低落、AI 訓練速度慢、資料讀取成為瓶頸'
     }
   ]
+
+  const isSubmitPanelShow = ref(false)
+
+  watch(
+    width,
+    (newWidth: number) => {
+      isSubmitPanelShow.value = newWidth >= 768
+    },
+    { immediate: true }
+  )
+
+  const openSubmitPanel = () => {
+    if (width.value >= 768) return
+    isSubmitPanelShow.value = true
+  }
+
+  const closeSubmitPanel = () => {
+    if (width.value >= 768) return
+    isSubmitPanelShow.value = false
+  }
 </script>
 
 <template>
   <div>
-    <header class="relative w-full h-[56vw] bg-linear-to-bl from-[#00E0AF] from-5% via-[#01A982] via-30% to-[#292D3A]">
-      <bannerContent class="absolute w-1/2 top-[45%] right-1/20 -translate-y-1/2 z-20" />
+    <header
+      class="relative w-full h-[120vw] sm:h-[90vw] md:h-[56vw] bg-linear-to-bl from-[#00E0AF] from-5% via-[#01A982] via-20% md:via-30% to-70% md:to-100% to-[#292D3A]"
+    >
+      <LogoSvg class="absolute block md:hidden top-6 left-6 w-28 z-20" />
+      <bannerContent class="absolute w-3/4 sm:w-3/5 md:w-1/2 top-[40%] md:top-[45%] right-1/20 -translate-y-1/2 z-20" />
       <client-only>
-        <div class="absolute h-9/10 top-1/2 left-1/10 -translate-y-1/2 mix-blend-soft-light z-10">
+        <div class="absolute h-9/10 top-1/2 left-4 md:left-1/10 -translate-y-1/2 mix-blend-soft-light z-10">
           <Vue3Lottie :animationData="bannerCircle" direction="alternate" />
         </div>
       </client-only>
       <bannerBgRight class="absolute h-full right-0 top-1/2 -translate-y-1/2 mix-blend-color-dodge" />
-      <bannerBgLeft class="absolute h-full left-0 top-1/2 -translate-y-1/2 mix-blend-color-dodge" />
+      <bannerBgLeft class="absolute hidden sm:block h-full left-0 top-1/2 -translate-y-1/2 mix-blend-color-dodge" />
 
       <div class="absolute w-full min-h-[13vw] bottom-0 left-0 bg-linear-to-t from-[#292D3A] to-transparent z-30">
         <div class="w-full h-full flex items-center justify-center">
-          <div class="w-3/10 2xl:w-1/4 h-full"></div>
-          <div class="w-7/10 2xl:w-3/4 px-6 lg:px-8 xl:px-12 h-full">
+          <div class="w-0 md:w-3/10 2xl:w-1/4 h-full"></div>
+          <div class="w-full md:w-7/10 2xl:w-3/4 px-6 sm:px-12 md:px-6 lg:px-8 xl:px-12 h-full">
             <DigitalPattern class="mb-4" />
             <h1
               class="text-white text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-5 HPEGraphikBold leading-tight text-shadow-lg/30 tracking-wide"
@@ -62,7 +89,7 @@
               企業數位轉型， <br />從解決 4 大儲存挑戰開始
             </h1>
             <div
-              class="banner-heading mb-16 text-xl lg:text-3xl 2xl:text-4xl font-semibold HPEGraphikSemiBold leading-tight text-shadow-lg tracking-wide py-3 px-6 w-4/5 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-2xl after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
+              class="banner-heading mb-16 text-xl lg:text-3xl 2xl:text-4xl font-semibold HPEGraphikSemiBold leading-tight text-shadow-lg tracking-wide py-3 px-6 w-full sm:w-4/5 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-2xl after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
             >
               <h2 class="inline-block bg-clip-text text-transparent bg-linear-to-br from-[#00E0AF] to-[#62E5F6] to-70%">
                 HPE Storage 全方位解決方案，讓您的 IT 基礎設施準備好迎接 AI 時代
@@ -78,13 +105,13 @@
         <DotCanvasBackground class="absolute h-full z-10" />
       </ClientOnly>
       <div class="relative w-full h-full flex items-center justify-center z-20 pointer-events-none">
-        <div class="w-3/10 2xl:w-1/4 h-full"></div>
-        <div class="w-7/10 2xl:w-3/4 h-full px-6 lg:px-8 xl:px-12">
+        <div class="w-0 md:w-3/10 2xl:w-1/4 h-full"></div>
+        <div class="w-full md:w-7/10 2xl:w-3/4 h-full px-6 sm:px-12 md:px-6 lg:px-8 xl:px-12">
           <MenuPanel />
           <div class="flex flex-col lg:flex-row justify-center items-center my-15">
             <div class="w-full lg:w-1/3">
               <h2
-                class="relative text-white text-xl lg:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-5 backdrop-blur-[2px]"
+                class="relative text-white text-xl lg:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/10 md:before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-3 md:pt-5 backdrop-blur-[2px]"
               >
                 這些資料管理挑戰，<br class="hidden lg:block" />是不是讓您非常頭痛？
               </h2>
@@ -109,10 +136,13 @@
 
     <GameSection />
 
-    <InformationSection />
+    <ClientOnly>
+      <InformationSection />
+    </ClientOnly>
 
     <ClientOnly>
-      <SubmitFormPanel />
+      <SubmitFormPanel v-show="isSubmitPanelShow" @close-submit-panel="closeSubmitPanel" />
+      <SubmitPanelButton v-show="!isSubmitPanelShow" @open-submit-panel="openSubmitPanel" />
     </ClientOnly>
   </div>
 </template>

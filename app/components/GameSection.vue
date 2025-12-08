@@ -134,8 +134,8 @@
       您的瀏覽器不支援影片播放
     </video>
     <div class="relative w-full h-full flex items-center justify-center z-20">
-      <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
-      <div class="w-7/10 2xl:w-3/4 h-full px-6 lg:px-8 xl:px-12 py-20 border border-white border-dashed">
+      <div class="w-0 md:w-3/10 2xl:w-1/4 h-full"></div>
+      <div class="w-full md:w-7/10 2xl:w-3/4 h-full px-6 sm:px-12 md:px-6 lg:px-8 xl:px-12 py-20">
         <div class="w-full">
           <div
             class="ai-heading inline-block pr-8 pl-40 lg:pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"

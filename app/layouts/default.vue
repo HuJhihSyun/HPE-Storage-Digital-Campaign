@@ -30,7 +30,9 @@
       <BasicModal />
     </transition>
     <slot />
-    <footer class="w-full bg-black flex justify-end lg:justify-center items-center py-3 px-6 lg:px-8 xl:px-12">
+    <footer
+      class="w-full bg-black flex justify-center md:justify-end lg:justify-center items-center py-3 px-6 lg:px-8 xl:px-12"
+    >
       <p class="text-white text-xs HPEGraphikRegular">{{ config.public.copyright }}</p>
     </footer>
   </div>

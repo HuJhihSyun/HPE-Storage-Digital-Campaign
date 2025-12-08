@@ -13,6 +13,9 @@
   import story2Pic from '@/assets/images/story-2.jpg'
   import story3Pic from '@/assets/images/story-3.jpg'
 
+  import { useWindowSize } from '@vueuse/core'
+  const { width } = useWindowSize()
+
   type ToolBoxItem = {
     id: string
     title: string
@@ -114,9 +117,9 @@
 <template>
   <section class="relative overflow-hidden bg-[url(@/assets/images/bg-1.jpg)] bg-cover bg-top">
     <div class="relative w-full h-full flex items-center justify-center z-20">
-      <div class="w-3/10 2xl:w-1/4 h-full border border-white border-dashed"></div>
-      <div class="w-7/10 2xl:w-3/4 h-full px-6 lg:px-8 xl:px-12 border border-white border-dashed">
-        <div class="flex flex-col lg:flex-row justify-center items-start gap-8 2xl:gap-10 my-10 lg:my-20">
+      <div class="w-0 md:w-3/10 2xl:w-1/4 h-full"></div>
+      <div class="w-full md:w-7/10 2xl:w-3/4 h-full px-6 sm:px-12 md:px-6 lg:px-8 xl:px-12">
+        <div class="flex flex-col lg:flex-row justify-center items-start gap-8 2xl:gap-10 mt-10 mb-20 md:my-10 lg:my-20">
           <div class="w-full lg:w-1/3">
             <div class="w-full">
               <h4
@@ -129,13 +132,14 @@
                 >
               </h4>
               <div
-                class="basic-panel w-full mt-4 lg:px-4 lg:py-1 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center overflow-hidden"
+                class="basic-panel w-full mt-4 px-4 py-4 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center overflow-hidden"
               >
                 <div class="w-full grid grid-cols-2 lg:flex lg:flex-col lg:divide-gray-400 lg:divide-y">
                   <div
-                    v-for="item in toolBoxData"
+                    v-for="(item, index) in toolBoxData"
                     :key="item.id"
-                    class="flex justify-center items-start pl-4 lg:pl-0 py-3 gap-2 hover:bg-white/20 hover:pl-5 lg:hover:px-2 cursor-pointer transition-all duration-200"
+                    class="flex justify-center items-start pl-4 lg:pl-0 py-3 gap-2 hover:bg-white/10 hover:pl-5 lg:hover:px-2 cursor-pointer transition-all duration-200"
+                    :class="{ 'border-r border-gray-500': index % 2 === 0 && index < toolBoxData.length - 1 && width < 1024, 'border-b border-gray-500': index < toolBoxData.length - 2 && width < 1024 }"
                   >
                     <component :is="item.icon" class="inline-block min-w-6 w-6 h-6 mt-1 text-[#62E5F6]" />
                     <div class="w-full">
@@ -163,15 +167,16 @@
                 >
               </h4>
               <div
-                class="basic-panel w-full mt-4 px-4 py-1 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center"
+                class="basic-panel w-full mt-4 py-2 px-4 lg:py-1 xl:px-6 xl:py-3 gap-4 xl:gap-6 bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl flex justify-center items-center overflow-hidden"
               >
-                <div class="w-full flex flex-col divide-gray-400 divide-y">
+                <div class="w-full grid grid-cols-2 lg:flex lg:flex-col lg:divide-gray-400 lg:divide-y">
                   <div
-                    v-for="item in techPackage"
+                    v-for="(item, index) in techPackage"
                     :key="item.id"
-                    class="flex justify-center items-start py-3 gap-2 hover:bg-white/20 hover:px-2 cursor-pointer transition-all duration-200"
+                    class="flex justify-center items-start px-4 lg:px-0 py-3 gap-2 hover:bg-white/10 hover:px-5 lg:hover:px-2 cursor-pointer transition-all duration-200"
+                    :class="{ 'border-r border-gray-500': index % 2 === 0 && index < techPackage.length - 1 && width < 1024 }"
                   >
-                    <component :is="item.icon" class="inline-block w-6 h-6 mt-1 text-[#62E5F6]" />
+                    <component :is="item.icon" class="inline-block min-w-6 w-6 h-6 mt-1 text-[#62E5F6]" />
                     <div class="w-full">
                       <h5
                         class="text-base xl:text-lg font-medium bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] HPEGraphikMedium whitespace-nowrap"

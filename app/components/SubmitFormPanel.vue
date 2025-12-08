@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+  import closeSvg from '@/assets/svg/x.svg?skipsvgo'
   import { useValidateUtils } from '@/composables/useValidate'
   import { useBasicModal } from '@/composables/useBasicModal'
   const { validate } = useValidateUtils()
   const { openModal } = useBasicModal()
 
-  import LogoSvg from '@/assets/images/logo-w.svg?skipsvgo'
+  import LogoSvg from '@/assets/svg/logo-b.svg?skipsvgo'
   const currentWindowInnerWidth = ref(0)
 
   onMounted(() => {
@@ -25,22 +26,26 @@
     const panelWidth =
       currentWindowInnerWidth.value > 1540
         ? screenWidth * 0.25 - 32
-        : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1023
+        : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1024
           ? screenWidth * 0.3 - 32
-          : screenWidth * 0.3 - 16 // 減去左右間距
+          : currentWindowInnerWidth.value <= 1023 && currentWindowInnerWidth.value > 767
+            ? screenWidth * 0.3 - 16 // 減去左右間距
+            : screenWidth - 32 // 減去左右間距
     return panelWidth
   })
 
   const panelHeight = computed(() => {
     return currentWindowInnerWidth.value > 1540
       ? window.innerHeight - 32
-      : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1023
+      : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1024
         ? window.innerHeight - 32
-        : window.innerHeight - 16 // 減去上下間距
+        : currentWindowInnerWidth.value <= 1023 && currentWindowInnerWidth.value > 767
+          ? window.innerHeight - 16 // 減去上下間距
+          : window.innerHeight - 32 // 減去上下間距
   })
 
   const formHeight = computed(() => {
-    return panelHeight.value - 260 // 扣除標題與按鈕區域高度
+    return currentWindowInnerWidth.value > 767 ? panelHeight.value - 260 : panelHeight.value - 220 // 扣除標題與按鈕區域高度
   })
 
   const formData = reactive({
@@ -235,15 +240,31 @@
     // .catch( error => alert('傳送失敗，錯誤訊息：' + error))
     // .finally(() => isLoading.value = false);
   }
+
+  interface submitPanelEmits {
+    (event: 'closeSubmitPanel'): void
+  }
+
+  const emit = defineEmits<submitPanelEmits>()
+
+  const closeSubmitPanel = () => {
+    emit('closeSubmitPanel')
+  }
 </script>
 
 <template>
   <aside
-    class="submit-form-panel fixed top-2 left-2 lg:top-4 lg:left-4 2xl:top-4 2xl:left-4 py-4 px-3 lg:px-5 bg-linear-to-br from-white/20 to-white/40 backdrop-blur-sm rounded-2xl pointer-events-none z-50"
+    class="submit-form-panel fixed top-4 left-4 md:top-2 md:left-2 lg:top-4 lg:left-4 2xl:top-4 2xl:left-4 py-4 px-3 lg:px-5 bg-linear-to-br from-white/70 to-white/20 backdrop-blur-sm rounded-2xl pointer-events-none z-50"
     :style="{ width: panelWidth + 'px', height: panelHeight + 'px' }"
   >
-    <div class="w-full pt-2 pb-5 border-b border-b-white">
-      <LogoSvg class="w-36 lg:w-40" />
+    <div class="w-full md:pt-2 pb-3 md:pb-5 border-b border-b-white flex justify-between items-center">
+      <LogoSvg class="w-24 md:w-36 lg:w-40" />
+      <button
+        class="inline-flex justify-center items-center border border-[#01A982] rounded-lg p-1 backdrop-blur-sm cursor-pointer pointer-events-auto"
+        @click="closeSubmitPanel"
+      >
+        <closeSvg class="inline-block text-[#01A982] w-5 h-5 transition-all duration-300 ease-in-out" />
+      </button>
     </div>
     <div class="w-full mt-4">
       <h4 class="text-white font-bold text-lg lg:text-xl text-shadow-lg/10">填寫資料，立即下載攻略</h4>
@@ -360,13 +381,13 @@
 
           <ul class="m-0 p-0 flex flex-col gap-2 list-none">
             <h4 class="text-sm font-semibold text-white text-shadow-sm/20 whitespace-nowrap">個人資料收集使用政策</h4>
-            <li class="flex justify-center items-start">
+            <li class="flex justify-start items-center">
               <BasicCheckbox class="w-6 min-w-6 h-6 mt-0.5" v-model="formData.subscribe" />
               <span class="HPEGraphikRegular inline-block text-white text-sm ml-2"
                 >我想收到 HPE 關於企業端的最新消息、公告與更多訊息。我可以隨時取消訂閱。</span
               >
             </li>
-            <li class="flex justify-center items-start">
+            <li class="flex justify-start items-center">
               <BasicCheckbox class="w-6 min-w-6 h-6 mt-0.5" v-model="formData.policy" />
               <div>
                 <span class="HPEGraphikRegular inline-block text-white text-sm ml-2"

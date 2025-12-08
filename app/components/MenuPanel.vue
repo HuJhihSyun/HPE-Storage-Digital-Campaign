@@ -48,7 +48,7 @@
   <nav
     class="inline-block bg-linear-to-bl from-white/10 to-white/30 border border-white rounded-full py-2 lg:py-4 px-4 lg:px-6 xl:px-10 backdrop-blur-sm"
   >
-    <ul class="flex justify-center items-center text-base xl:text-lg divide-x divide-white gap-4">
+    <ul class="flex justify-center items-center text-sm md:text-base xl:text-lg divide-x divide-white gap-4">
       <li
         v-for="item in menuItems"
         :key="item.id"
@@ -63,17 +63,17 @@
         <client-only>
           <div class="flex justify-center items-center gap-2 xl:gap-3">
             <span
-              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
+              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
               >{{ days }}</span
             >
             天
             <span
-              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
+              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
               >{{ hours }}</span
             >
             時
             <span
-              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
+              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
               >{{ minutes }}</span
             >
             分
