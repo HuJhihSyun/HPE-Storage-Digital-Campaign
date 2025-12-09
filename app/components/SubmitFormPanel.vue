@@ -1,7 +1,10 @@
 <script lang="ts" setup>
   import closeSvg from '@/assets/svg/x.svg?skipsvgo'
+  import { useGlobalLoading } from '@/composables/useGlobalLoading'
   import { useValidateUtils } from '@/composables/useValidate'
   import { useBasicModal } from '@/composables/useBasicModal'
+
+  const { start: globalLoadingStart, finish: globalLoadingFinish, loading } = useGlobalLoading()
   const { validate } = useValidateUtils()
   const { openModal } = useBasicModal()
 
@@ -188,6 +191,8 @@
     policy: ''
   })
 
+  const isFormSubmitSuccess = ref(false)
+
   const handleSubmit = async (event: Event) => {
     event.preventDefault()
 
@@ -201,27 +206,42 @@
 
     console.log('表單驗證成功，準備提交資料')
 
-    // openModal({
-    //   title: '列表切換施工中',
-    //   content:
-    //     '頁面尚未完成，尚有問與答項目待補充與 UI 元件待製作，如有更好的建議歡迎提供，實驗室元件庫不吝接受指教，請耐心等候！',
-    //   confirmText: '確認',
-    //   cancelText: '取消',
-    //   onConfirm: () => {
-    //     console.log('確認！')
-    //   },
-    //   onCancel: () => {
-    //     console.log('已取消！')
-    //   }
-    // })
+    try {
+      globalLoadingStart('發送資料中...')
 
-    // isLoading.value = true;
+      const { data, error } = await useFetch(
+        'https://script.google.com/macros/s/AKfycbxi99YxyaZzGYcUSY8-OdNgbVBCgTKUaQXKfxiuukDyPBvoeuq2hHtryDGrLcqX8unIig/exec',
+        {
+          method: 'POST',
+          body: formData,
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+      )
 
-    // const { data, error } = await useFetch('https://script.google.com/macros/s/AKfycbzumI-w1Xhjy87XZ8wh2D4AyMzq4R038_Z5ZpRweC-l3n0ckqEfoNFy3m_ygDnBgQsV/exec', {
-    //     method: 'POST',
-    //     body: formData,
-    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    // });
+      if (error.value) {
+        throw new Error(`表單提交失敗: ${error.value.message}`)
+      } else {
+        console.log('表單提交成功:', data.value)
+        isFormSubmitSuccess.value = true
+      }
+
+      openModal({
+        title: '表單已送出！',
+        content: '感謝您的填寫，我們將盡快與您聯繫。',
+        confirmText: '確認',
+        cancelText: '取消',
+        onConfirm: () => {
+          console.log('確認！')
+        },
+        onCancel: () => {
+          console.log('已取消！')
+        }
+      })
+    } catch (error) {
+      console.error('表單提交失敗:', error)
+    } finally {
+      globalLoadingFinish()
+    }
 
     // 參考用 axios 傳送表單資料
     // axios({

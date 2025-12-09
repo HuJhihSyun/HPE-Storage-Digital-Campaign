@@ -1,7 +1,4 @@
 <script setup lang="ts">
-  import { useGlobalLoading } from '@/composables/useGlobalLoading'
-  const { loading } = useGlobalLoading()
-
   const config = useRuntimeConfig()
 
   useSeoMeta({
