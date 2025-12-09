@@ -64,7 +64,8 @@
     information: '', // 資訊
     source: '', // 來源
     subscribe: false, // 訂閱電子報
-    policy: false // 同意隱私政策
+    policy: false, // 同意隱私政策
+    time: '' // 填表時間
   })
 
   // 產業類別選項
@@ -196,6 +197,16 @@
   const handleSubmit = async (event: Event) => {
     event.preventDefault()
 
+    formData.time = new Intl.DateTimeFormat('zh-TW', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).format(new Date())
+
     console.log('表單資料:', formData)
     Object.assign(errorMessages, validate(formData))
 
@@ -204,13 +215,11 @@
       return
     }
 
-    console.log('表單驗證成功，準備提交資料')
-
     try {
       globalLoadingStart('發送資料中...')
 
       const { data, error } = await useFetch(
-        'https://script.google.com/macros/s/AKfycbxi99YxyaZzGYcUSY8-OdNgbVBCgTKUaQXKfxiuukDyPBvoeuq2hHtryDGrLcqX8unIig/exec',
+        'https://script.google.com/macros/s/AKfycbyu-j9aJr5nPVV_VuuFRK18INmQgTwnoeQKNCdAaLNtQfDoXpPbAEPoPvi3m5vV2t3B/exec',
         {
           method: 'POST',
           body: formData,
@@ -228,10 +237,13 @@
       openModal({
         title: '表單已送出！',
         content: '感謝您的填寫，我們將盡快與您聯繫。',
-        confirmText: '確認',
+        confirmText: '下載攻略',
         cancelText: '取消',
         onConfirm: () => {
-          console.log('確認！')
+          window.open(
+            'https://paths.ext.hpe.com/c/a00149500enw?x=cIiY0G&cc=tw&lang=en&lb-height=100&lb-width=100&lb-mode=overlay&utm_source=&utm_medium=&utm_campaign=&utm_content=&utm_term=&utm_geo=&crid=&plid=&pf_route=a00149500',
+            '_blank'
+          )
         },
         onCancel: () => {
           console.log('已取消！')
@@ -242,23 +254,13 @@
     } finally {
       globalLoadingFinish()
     }
+  }
 
-    // 參考用 axios 傳送表單資料
-    // axios({
-    //     method: 'post',
-    //     url: 'https://script.google.com/macros/s/AKfycbzumI-w1Xhjy87XZ8wh2D4AyMzq4R038_Z5ZpRweC-l3n0ckqEfoNFy3m_ygDnBgQsV/exec',
-    //     data: formData,
-    //     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    // })
-    // .then(
-    //     res => {
-    //         isLoading.value = false;
-    //         console.log(res, 'success');
-    //         closeModal()
-    //     }
-    // )
-    // .catch( error => alert('傳送失敗，錯誤訊息：' + error))
-    // .finally(() => isLoading.value = false);
+  const downloadGuide = () => {
+    window.open(
+      'https://paths.ext.hpe.com/c/a00149500enw?x=cIiY0G&cc=tw&lang=en&lb-height=100&lb-width=100&lb-mode=overlay&utm_source=&utm_medium=&utm_campaign=&utm_content=&utm_term=&utm_geo=&crid=&plid=&pf_route=a00149500',
+      '_blank'
+    )
   }
 
   interface submitPanelEmits {
@@ -280,7 +282,7 @@
     <div class="w-full md:pt-2 pb-3 md:pb-5 border-b border-b-white flex justify-between items-center">
       <LogoSvg class="w-24 md:w-36 lg:w-40" />
       <button
-        class="inline-flex justify-center items-center border border-[#01A982] rounded-lg p-1 backdrop-blur-sm cursor-pointer pointer-events-auto"
+        class="inline-flex md:hidden justify-center items-center border border-[#01A982] rounded-lg p-1 backdrop-blur-sm cursor-pointer pointer-events-auto"
         @click="closeSubmitPanel"
       >
         <closeSvg class="inline-block text-[#01A982] w-5 h-5 transition-all duration-300 ease-in-out" />
@@ -301,7 +303,7 @@
             placeholder="請輸入您的姓名"
             required
             :error-message="errorMessages.name"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <BasicInput
             v-model="formData.company"
@@ -310,7 +312,7 @@
             placeholder="請輸入您的所屬企業"
             required
             :error-message="errorMessages.company"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <BasicSelect
             v-model="formData.industry"
@@ -320,7 +322,7 @@
             :options="industryOptions"
             required
             :error-message="errorMessages.industry"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <BasicInput
             v-model="formData.title"
@@ -329,7 +331,7 @@
             placeholder="請輸入您的職稱"
             required
             :error-message="errorMessages.title"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <BasicSelect
             v-model="formData.decisionRole"
@@ -339,7 +341,7 @@
             :options="decisionRoleOptions"
             required
             :error-message="errorMessages.decisionRole"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <BasicInput
             v-model="formData.email"
@@ -348,7 +350,7 @@
             placeholder="請輸入您的電子郵件"
             required
             :error-message="errorMessages.email"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <div>
             <div class="flex justify-between gap-2">
@@ -359,7 +361,7 @@
                   :type="'tel'"
                   placeholder="聯絡電話"
                   required
-                  :disabled="false"
+                  :disabled="isFormSubmitSuccess"
                 />
               </div>
               <div class="w-3/10">
@@ -369,7 +371,7 @@
                   :type="'tel'"
                   placeholder="分機"
                   :error-message="errorMessages.phone"
-                  :disabled="false"
+                  :disabled="isFormSubmitSuccess"
                 />
               </div>
             </div>
@@ -381,14 +383,14 @@
             placeholder="請輸入您的行動電話"
             required
             :error-message="errorMessages.mobile"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <BasicTextarea
             v-model="formData.information"
             label="請問您想要了解哪方面的 Storage 服務資訊？"
             :type="'text'"
             placeholder="請問您想要了解哪方面的 Storage 服務資訊？"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
           <BasicSelect
             v-model="formData.source"
@@ -396,7 +398,7 @@
             :type="'text'"
             placeholder="請選擇"
             :options="sourceOptions"
-            :disabled="false"
+            :disabled="isFormSubmitSuccess"
           />
 
           <ul class="m-0 p-0 flex flex-col gap-2 list-none">
@@ -425,14 +427,25 @@
             </li>
           </ul>
         </div>
-        <button
-          type="submit"
-          class="submit-button relative mt-4 flex justify-center items-center gap-1 w-full text-white text-shadow-sm/20 font-semibold py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
-          @click="handleSubmit"
-        >
-          <span class="text-lg">提交</span>
-          <span class="text-sm HPEGraphikRegular">Submit</span>
-        </button>
+        <template v-if="!isFormSubmitSuccess">
+          <button
+            type="submit"
+            class="submit-button relative mt-4 flex justify-center items-center gap-1 w-full text-white text-shadow-sm/20 font-semibold py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+            @click="handleSubmit"
+          >
+            <span class="text-lg">提交</span>
+            <span class="text-sm HPEGraphikRegular">Submit</span>
+          </button>
+        </template>
+        <template v-else>
+          <button
+            type="button"
+            class="submit-button relative mt-4 flex justify-center items-center gap-1 w-full text-white text-shadow-sm/20 font-semibold py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+            @click="downloadGuide"
+          >
+            <span class="text-lg">下載攻略</span>
+          </button>
+        </template>
       </form>
     </div>
   </aside>

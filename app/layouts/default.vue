@@ -20,12 +20,8 @@
     <transition name="fade" mode="out-in">
       <InitialLoading v-if="isInitial" />
     </transition>
-    <transition name="fade" mode="out-in">
-      <AppLoading />
-    </transition>
-    <transition name="fade" mode="out-in">
-      <BasicModal />
-    </transition>
+    <AppLoading />
+    <BasicModal />
     <slot />
     <footer
       class="w-full bg-black flex justify-center md:justify-end lg:justify-center items-center py-3 px-6 lg:px-8 xl:px-12"
