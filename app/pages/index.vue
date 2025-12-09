@@ -21,24 +21,24 @@
   const featureData: Feature[] = [
     {
       id: 'security',
-      title: '資安防護缺口',
+      title: '100% 可用的數據資安防護',
       subtitle: 'Cyber Resilience',
-      description: '勒索病毒威脅加劇，沒有 NIST 2.0 架構造成現有防護措施漏洞',
+      description: '強化數位韌性，將資料恢復時間從數週縮短到數分鐘',
       content: '擔心勒索病毒攻擊、確保資料安全合規、快速災難復原'
     },
     {
       id: 'budget',
-      title: '虛擬化成本暴增',
+      title: '新型態虛擬化策略',
       subtitle: 'VMware Alternative',
-      description: 'VMware 授權費暴漲，IT 預算吃緊難以為繼',
+      description: '不必被單一方案綁定，重新評估虛擬化成本結構',
       content: 'VMware 授權費暴漲、尋找高效能替代方案、控制總擁有成本'
     },
     {
       id: 'ai',
-      title: 'AI 效能瓶頸',
-      subtitle: 'AI',
-      description: 'AI 專案進展緩慢，昂貴GPU使用率低落',
-      content: 'GPU 使用率低落、AI 訓練速度慢、資料讀取成為瓶頸'
+      title: 'AI 數據平台就緒',
+      subtitle: 'AI Data Platform',
+      description: '為 AI 工作負載打造高效能儲存基礎建置',
+      content: 'AI 應用加速落地，企業需要更完整的數據平台支援'
     }
   ]
 
@@ -111,9 +111,9 @@
         <div class="w-full md:w-7/10 2xl:w-3/4 h-full px-6 sm:px-12 md:px-6 lg:px-8 xl:px-12">
           <MenuPanel />
           <div class="flex flex-col lg:flex-row justify-center items-center my-15">
-            <div class="w-full lg:w-1/3">
+            <div class="w-full lg:w-3/10">
               <h2
-                class="relative text-white text-xl lg:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/10 md:before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-3 md:pt-5 backdrop-blur-[2px]"
+                class="relative text-white text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/10 lg:before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-3 lg:pt-5 backdrop-blur-[2px]"
               >
                 這些資料管理挑戰，<br class="hidden lg:block" />是不是讓您非常頭痛？
               </h2>
@@ -123,7 +123,7 @@
                 </div>
               </client-only>
             </div>
-            <div class="w-full lg:w-2/3 flex flex-col justify-center items-center gap-8 mt-10">
+            <div class="w-full lg:w-7/10 flex flex-col justify-center items-center gap-8 mt-10">
               <FeaturePanel v-for="(feature, index) in featureData" :key="index" :id="feature.id">
                 <template #title>{{ feature.title }}</template>
                 <template #subtitle>{{ feature.subtitle }}</template>

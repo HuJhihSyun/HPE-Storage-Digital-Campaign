@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+  import card1Img from '@/assets/images/card-1.jpg'
+  import card2Img from '@/assets/images/card-2.jpg'
+  import card3Img from '@/assets/images/card-3.jpg'
+
   interface cardProps {
     index: number
     gameStep: number
@@ -50,7 +54,7 @@
           <div class="relative w-full h-full rounded-md overflow-hidden p-2 2xl:p-3">
             <div class="relative w-full h-full rounded-md overflow-hidden pl-2 pr-6 py-2">
               <img
-                src="@/assets/images/card-1.png"
+                :src="index == 0 ? card1Img : index == 1 ? card2Img : card3Img"
                 alt="content"
                 width="100%"
                 class="absolute left-1/2 top-1/2 -translate-1/2 object-cover z-0"

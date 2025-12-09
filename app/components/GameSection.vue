@@ -11,36 +11,36 @@
   }
 
   const cardData: CardInfo[] = [
+    // {
+    //   title: '資料管理混亂',
+    //   firstText: 'Data',
+    //   secondText: 'Data',
+    //   subtitle: '資料散落各處，治理效率下降',
+    //   description: '企業資料散布在不同系統、找不到關鍵資訊、備份時間冗長',
+    //   optionId: 'A'
+    // },
     {
-      title: '資料管理混亂',
-      firstText: 'Data',
-      secondText: 'Data',
-      subtitle: '資料散落各處，治理效率下降',
-      description: '企業資料散布在不同系統、找不到關鍵資訊、備份時間冗長',
-      optionId: 'A'
-    },
-    {
-      title: '資安防護缺口',
+      title: '100% 可用的數據資安防護',
       firstText: 'Cyber',
       secondText: 'Resilience',
-      subtitle: '勒索病毒威脅加劇，沒有 NIST 2.0 架構造成現有防護措施漏洞頻現',
+      subtitle: '強化數位韌性，將資料恢復時間從數週縮短到數分鐘',
       description: '擔心勒索病毒攻擊、確保資料安全合規、快速災難復原',
       optionId: 'B'
     },
     {
-      title: '虛擬化成本暴增',
+      title: '新型態虛擬化策略',
       firstText: 'VMware',
       secondText: 'Alternative',
-      subtitle: 'VMware 授權費暴漲，IT 預算吃緊難以為繼',
+      subtitle: '不必被單一方案綁定，重新評估虛擬化成本結構',
       description: 'VMware 授權費暴漲、尋找高效能替代方案、控制總擁有成本',
       optionId: 'C'
     },
     {
-      title: 'AI 效能瓶頸',
-      firstText: 'AI',
-      secondText: 'AI',
-      subtitle: 'AI 專案進展緩慢，昂貴 GPU 使用率低落',
-      description: 'GPU 使用率低落、AI 訓練速度慢、資料讀取成為瓶頸',
+      title: 'AI 數據平台就緒',
+      firstText: 'AI Data',
+      secondText: 'Platform',
+      subtitle: '為 AI 工作負載打造高效能儲存基礎建置',
+      description: 'AI 應用加速落地，企業需要更完整的數據平台支援',
       optionId: 'D'
     }
   ]
@@ -141,12 +141,13 @@
             class="ai-heading inline-block pr-8 pl-40 lg:pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"
           >
             <img src="@/assets/images/robot.png" alt="robot" class="absolute left-4 bottom-0 w-30 lg:w-24" />
-            <h2 class="text-white text-xl lg:text-2xl 2xl:text-3xl font-bold">
+            <h2 class="text-white font-bold">
               <span
-                class="text-3xl lg:text-4xl 2xl:text-5xl bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] HPEGraphikBold"
+                class="text-3xl lg:text-4xl 2xl:text-5xl mr-1 xl:mr-2 bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] HPEGraphikBold"
                 >30</span
               >
-              秒為您剖析 <span class="HPEGraphikBold">HPE</span> 將如何解決您企業正面臨的資料韌性挑戰
+              <span class="text-xl lg:text-2xl 2xl:text-3xl">秒快速診斷：</span>
+              <span class="text-lg lg:text-xl 2xl:text-2xl">您的數據基礎架構準備好面對未來挑戰了嗎？</span>
             </h2>
             <h5 class="text-sm md:text-base lg:text-lg text-[#E6E8E9] mt-1 ml-1">
               點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選），根據選擇組合，跳出對應診斷結果
@@ -156,7 +157,6 @@
 
         <transition name="fade" mode="out-in">
           <div v-if="gameStep < GameStep.Loading" class="mt-15 grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- 卡片範例（複製 4 次） -->
             <GameSectionCard
               v-for="(item, index) in cardData"
               :key="item.firstText"
