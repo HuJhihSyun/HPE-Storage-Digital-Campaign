@@ -3,11 +3,12 @@
     name: string
     link: string
     id: string
+    target?: string
   }
 
   const menuItems: MenuItems[] = [
-    { name: '互動遊戲', link: '#', id: 'game' },
-    { name: '抽獎好禮', link: '#', id: 'lottery' }
+    { name: '互動遊戲', link: '#', id: 'game', target: '_self' },
+    { name: '點擊有好康', link: 'https://forms.gle/2e3GoPMxkrLGgWte8', id: 'lottery', target: '_blank' }
   ]
 
   // 活動開始時間 2025 年 12 月 29 日 12:00
@@ -54,7 +55,7 @@
         :key="item.id"
         class="text-white hover:text-[#62E5F6] pr-4 whitespace-nowrap pointer-events-auto"
       >
-        <a :href="item.link">{{ item.name }}</a>
+        <a :href="item.link" :target="item.target" rel="noopener noreferrer">{{ item.name }}</a>
       </li>
       <li class="text-white pr-4 flex justify-center items-center gap-2">
         <span class="whitespace-nowrap">{{

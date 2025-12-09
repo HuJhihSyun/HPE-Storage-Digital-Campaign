@@ -86,13 +86,15 @@
             <h1
               class="text-white text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-5 HPEGraphikBold leading-tight text-shadow-lg/30 tracking-wide"
             >
-              企業數位轉型， <br />從解決 4 大儲存挑戰開始
+              迎戰 AI 時代，<br />先解決 CIO 最頭痛的三件事
             </h1>
             <div
               class="banner-heading mb-16 text-xl lg:text-3xl 2xl:text-4xl font-semibold HPEGraphikSemiBold leading-tight text-shadow-lg tracking-wide py-3 px-6 w-full sm:w-4/5 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-2xl after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
             >
               <h2 class="inline-block bg-clip-text text-transparent bg-linear-to-br from-[#00E0AF] to-[#62E5F6] to-70%">
-                HPE Storage 全方位解決方案，讓您的 IT 基礎設施準備好迎接 AI 時代
+                <span class="whitespace-nowrap mr-4 md:mr-6 lg:mr-8">√ 新型態 VM 虛擬私有雲</span>
+                <span class="whitespace-nowrap mr-4 md:mr-6 lg:mr-8">√ 資安數據保護 100%</span>
+                <span class="whitespace-nowrap mr-4 md:mr-6 lg:mr-8">√ AI 數據平台</span>
               </h2>
             </div>
           </div>
@@ -144,6 +146,8 @@
       <SubmitFormPanel v-show="isSubmitPanelShow" @close-submit-panel="closeSubmitPanel" />
       <SubmitPanelButton v-show="!isSubmitPanelShow" @open-submit-panel="openSubmitPanel" />
     </ClientOnly>
+
+    <SurpriseButton />
   </div>
 </template>
 

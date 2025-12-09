@@ -22,6 +22,7 @@
 
   const onWindowResize = () => {
     currentWindowInnerWidth.value = window.innerWidth
+    titleHeight.value = formTitle.value?.getBoundingClientRect().height ?? 0
   }
 
   const panelWidth = computed(() => {
@@ -29,7 +30,7 @@
     const panelWidth =
       currentWindowInnerWidth.value > 1540
         ? screenWidth * 0.25 - 32
-        : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1024
+        : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1023
           ? screenWidth * 0.3 - 32
           : currentWindowInnerWidth.value <= 1023 && currentWindowInnerWidth.value > 767
             ? screenWidth * 0.3 - 16 // 減去左右間距
@@ -40,15 +41,27 @@
   const panelHeight = computed(() => {
     return currentWindowInnerWidth.value > 1540
       ? window.innerHeight - 32
-      : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1024
+      : currentWindowInnerWidth.value <= 1540 && currentWindowInnerWidth.value > 1023
         ? window.innerHeight - 32
         : currentWindowInnerWidth.value <= 1023 && currentWindowInnerWidth.value > 767
           ? window.innerHeight - 16 // 減去上下間距
           : window.innerHeight - 32 // 減去上下間距
   })
 
+  const formTitle = ref<HTMLElement | null>(null)
+
+  const titleHeight = ref(0)
+
+  onMounted(() => {
+    nextTick(() => {
+      titleHeight.value = formTitle.value?.getBoundingClientRect().height ?? 0
+    })
+  })
+
   const formHeight = computed(() => {
-    return currentWindowInnerWidth.value > 767 ? panelHeight.value - 260 : panelHeight.value - 220 // 扣除標題與按鈕區域高度
+    return currentWindowInnerWidth.value > 767
+      ? panelHeight.value - (210 + titleHeight.value)
+      : panelHeight.value - (180 + titleHeight.value) // 扣除標題與按鈕區域高度
   })
 
   const formData = reactive({
@@ -289,8 +302,12 @@
       </button>
     </div>
     <div class="w-full mt-4">
-      <h4 class="text-white font-bold text-lg lg:text-xl text-shadow-lg/10">填寫資料，立即下載攻略</h4>
-      <p class="text-white text-sm text-shadow-lg/10">快速掌握 AI 時代的資料管理、安全儲存方法</p>
+      <div ref="formTitle" class="w-full inline-block">
+        <h4 class="text-white font-bold text-lg lg:text-xl text-shadow-lg/10 HPEGraphikSemiBold">
+          填寫資料，讓 HPE 專家為您評估現況與痛點
+        </h4>
+        <p class="text-white text-sm text-shadow-lg/10">快速掌握 AI 時代的資料管理、安全儲存方法</p>
+      </div>
       <form class="w-full">
         <div
           class="mt-4 flex flex-col gap-4 h-full overflow-y-auto pr-2 pointer-events-auto"
@@ -413,17 +430,128 @@
               <BasicCheckbox class="w-6 min-w-6 h-6 mt-0.5" v-model="formData.policy" />
               <div>
                 <span class="HPEGraphikRegular inline-block text-white text-sm ml-2"
-                  >您已閱讀並同意下方我們關於本次活動的規範以及 HPE 資料隱私權與安全性附加條款。</span
+                  >您已閱讀並同意下方我們關於本次活動的規範以及
+                  <a href="https://www.hpe.com/psnow/doc/a50011819zht" target="_blank" class="text-[#00E0AF] underline"
+                    >HPE 資料隱私權與安全性附加條款</a
+                  >。</span
                 >
                 <h6 v-if="errorMessages.policy" class="text-xs text-red-600 text-right">
                   {{ errorMessages.policy }}
                 </h6>
               </div>
             </li>
-            <li class="HPEGraphikRegular text-white text-sm">
+            <li class="HPEGraphikRegular text-white text-xs">
               填交並送填此表，表示本人同意將所提供之個人資料，提供予 HPE 公司進行蒐集、處理及利用。本人同意 HPE
               公司除得寄發各類相關活動、課程及產品行銷有關之 EDM
               或與商品行銷有關之訊息或行銷宣傳品至本人所填寫的電子郵件信箱外，亦得以認為適當之方式以電話或其他通訊方式提供各類活動、課程及產品行銷相關訊息予本人。請您放心，我們會盡力保護您的個人資料與隱私，並遵守相關法律規範。
+            </li>
+          </ul>
+
+          <ul class="m-0 p-0 flex flex-col gap-2 list-none">
+            <h4 class="text-sm font-semibold text-white text-shadow-sm/20 whitespace-nowrap">活動辦法與個資蒐集規定</h4>
+            <p class="HPEGraphikRegular text-white text-xs">
+              以下活動辦法及注意事項適用於 HPE 慧與科技【HPE Digital Campaign for
+              Storage】活動（以下簡稱本活動），參與本活動者（以下簡稱參加者）同意接受並遵守以下辦法及規定：
+            </p>
+            <li class="HPEGraphikRegular text-white text-xs">
+              活動期間：2026 年 1 月 15 日 12:00 ~ 2026 年 4 月 20 日 23:59 止（最後活動時間以主辦單位系統認定為準）。
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              主辦單位：
+              <ol class="list-disc list-inside pl-1">
+                <li>慧與科技股份有限公司 (Hewlett Packard Enterprise)</li>
+                <li>正平整合行銷股份有限公司 (AccessUs Marketing Services Inc.)</li>
+              </ol>
+            </li>
+          </ul>
+
+          <ul class="m-0 p-0 flex flex-col gap-2 list-none">
+            <h4 class="text-sm font-semibold text-white text-shadow-sm/20 whitespace-nowrap">活動說明與注意事項：</h4>
+            <li class="HPEGraphikRegular text-white text-xs">
+              活動說明：凡於本活動期間內，至本活動網站登錄個人資料並完成問卷填寫，前 5 名有機會抽中下方活動獎項！
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              活動獎項：
+              <ol class="list-disc list-inside pl-1">
+                <li>第一輪獎(10)：xxx</li>
+                <li>第二輪獎(5)：xxx</li>
+              </ol>
+              第一輪獎項（4月底）將抽出十名，第二輪獎項（7月底）將抽出五名；將於活動結束後統一抽出。
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              得獎公布：主辦單位將於 2026 年 4 月 23 日 23:59 前，於本活動網站公布得獎名單。
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              領獎方式：
+              主辦單位於上述平台公布得獎名單後，承辦單位將於七個工作日內透過中獎者於活動期間留存之聯絡方式聯繫（電話、電子郵件），在中獎者完成得獎申報流程後，承辦單位將透過得獎者於網站留存之資料，以郵寄方式寄出贈品。
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              中獎兌換與領取注意事項（請務必詳閱）：
+              <ol class="list-disc list-inside pl-1">
+                <li>活動截止時間為 2026 年 4 月 20 日 23:59 止。</li>
+                <li>中獎者必須本人參與本活動且不得轉讓資格。</li>
+              </ol>
+            </li>
+          </ul>
+
+          <ul class="m-0 p-0 flex flex-col gap-2 list-none">
+            <h4 class="text-sm font-semibold text-white text-shadow-sm/20">
+              我熟讀下列 HPE
+              告知的個人資料保護事項並同意得提供個人上述報名資料提供予本活動之協辦廠商進行蒐集、處理及利用。
+            </h4>
+            <h4 class="text-sm font-semibold text-white text-shadow-sm/20">
+              聲明：Hewlett Packard Enterprise 為保護您的個人資料，依據個人資料保護法第8條規定，告知有關 Hewlett Packard
+              Enterprise 對於個人資料之蒐集、處理及利用等相關事項如下，當您填寫完成個人資料後，即表示您同意以下內容：
+            </h4>
+            <li class="HPEGraphikRegular text-white text-xs">
+              一、蒐集之目的：Hewlett Packard Enterprise
+              依據個人資料保護法及相關法令之規定，蒐集您的個人資料，為行銷、非公務機關依法定義務所進行個人資料之蒐集處理及利用、契約、類似契約或其他法律關係事務、購票業務、個人資料之合法交易業務、消費者、客戶管理與服務、消費者保護、商業與技術資訊、教育或訓練行政、資（通）訊服務、資（通）訊與資料庫管理
+              、資通安全與管理、網路購物及其他電子商務服務、廣告或商業行為管理、調查、統計與研究分析、其他經營合於營業登記項目或組織章程所定之業務、其他諮詢與顧問服務行銷、客戶管理、售後服務、提供服務及業務之必要範圍。
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              二、個人資料之類別：Hewlett Packard Enterprise
+              台灣所蒐集您提供之資料，包含姓名、身分證統一編號、護照號碼、年齡、性別、服務單位、職稱、連絡方式，包括但不限於電話、E-MAIL或地址等、金融機構帳戶之號碼與姓名、信用卡或簽帳卡之號碼、個人之其他號碼或帳戶或其他得以直接或間接識別您個人之資料。
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              三、個人資料利用之期間、地區、對象或方式：
+              <ol class="list-inside pl-1">
+                <li>
+                  (一) 期間：於 Hewlett Packard Enterprise 存續期間、依法令或契約約定之資料保存期間或Hewlett Packard
+                  Enterprise 因執行業務所必須之保存期間。
+                </li>
+                <li>(二) 地區：中華民國領域內或利用對象之國內及國外所在地。</li>
+                <li>
+                  (三) 對象：Hewlett Packard Enterprise 或委託 Hewlett Packard Enterprise 舉辦活動之公司或機構、Hewlett
+                  Packard Enterprise 之共同行銷或合作夥伴、其他與 Hewlett Packard Enterprise
+                  有業務往來或合作之機構、依法有調查權之機關。
+                </li>
+                <li>
+                  (四)
+                  方式：以電話、簡訊、電子郵件、紙本或其他合於當時科學技術之適當方式蒐集、處理國際傳輸與利用個人資料。
+                </li>
+              </ol>
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              四、您的個人資料，您得依個人資料保護法之規定：
+              <ol class="list-inside">
+                <li>(一) 請求查詢、閱覽或製給複製本，惟 Hewlett Packard Enterprise 依法得酌收必要成本費用。</li>
+                <li>(二) 請求補充或更正之。</li>
+                <li>
+                  (三) 個人資料蒐集之特定目的消失或期限屆滿時，向 Hewlett Packard Enterprise
+                  請求刪除、停止處理或利用您的個人資料。但 Hewlett Packard Enterprise
+                  因執行職務或業務所必須者，不在此限。
+                </li>
+                <li>
+                  (四) Hewlett Packard Enterprise 利用個人資料行銷，您表示拒絕接受行銷時，Hewlett Packard Enterprise
+                  將在合理期間後停止以行銷之名義利用您個人資料。
+                </li>
+              </ol>
+            </li>
+            <li class="HPEGraphikRegular text-white text-xs">
+              五、若您不願意提供您的個人資料予 Hewlett Packard Enterprise 依上述說明內容為蒐集、處理及利用，您將無法參加
+              Hewlett Packard Enterprise 舉辦之各項活動。
+              當您送出表單的同時，即表明您已由所屬單位取得一切必要之批准許可，得受領與本活動有關，且由 HPE
+              提供之有價物品。您並確認此之受領行為並不會違反您所屬單位之任何法律或道德標準。HPE將不對其承擔任何責任。
             </li>
           </ul>
         </div>

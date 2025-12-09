@@ -11,8 +11,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      title: '企業數位轉型，從解決 4 大儲存挑戰開始',
-      description: 'HPE Storage 全方位解決方案，讓您的 IT 基礎設施準備好迎接 AI 時代',
+      title: '迎戰AI時代，先解決CIO最頭痛的三件事',
+      description: '√ 新型態VM虛擬私有雲 √ 資安數據保護100% √ AI數據平台',
       copyright: '© Copyright 2025 Hewlett Packard Enterprise Development LP'
     }
   },

@@ -140,7 +140,7 @@
           <div
             class="ai-heading inline-block pr-8 pl-40 lg:pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"
           >
-            <img src="@/assets/images/robot.png" alt="robot" class="absolute left-5 bottom-0 w-30 lg:w-[90px]" />
+            <img src="@/assets/images/robot.png" alt="robot" class="absolute left-4 bottom-0 w-30 lg:w-24" />
             <h2 class="text-white text-xl lg:text-2xl 2xl:text-3xl font-bold">
               <span
                 class="text-3xl lg:text-4xl 2xl:text-5xl bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] HPEGraphikBold"
