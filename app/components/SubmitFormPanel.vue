@@ -303,10 +303,10 @@
     </div>
     <div class="w-full mt-4">
       <div ref="formTitle" class="w-full inline-block">
-        <h4 class="text-white font-bold text-lg lg:text-xl text-shadow-lg/10 HPEGraphikSemiBold">
+        <h4 class="text-white font-bold text-sm md:text-base lg:text-lg text-shadow-lg/10 HPEGraphikSemiBold">
           填寫資料，讓 HPE 專家為您評估現況與痛點
         </h4>
-        <p class="text-white text-sm text-shadow-lg/10">快速掌握 AI 時代的資料管理、安全儲存方法</p>
+        <p class="text-white text-xs md:text-sm text-shadow-lg/10">快速掌握 AI 時代的資料管理、安全儲存方法</p>
       </div>
       <form class="w-full">
         <div

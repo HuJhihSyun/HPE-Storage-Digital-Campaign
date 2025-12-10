@@ -8,6 +8,7 @@
 
   type Solution = {
     id: string
+    tag?: string
     title: string
     solution: string
     highlight: string
@@ -15,46 +16,25 @@
 
   const solutionData = reactive<Solution[]>([
     {
-      id: 'A1',
-      title: '資料散落各處，治理效率低落',
-      solution: 'HPE Storage 統一資料平台，實現集中管理',
-      highlight: '提升 80% 資料檢索效率，減少 70% 儲存成本'
-    },
-    {
       id: 'A2',
+      tag: '您的挑戰',
       title: '資安防護存在缺口，急需加強',
       solution: '符合 NIST 2.0 五層防護資安框架架構，從識別到恢復，全面抵禦勒索病毒',
       highlight: '99.9% 防護成功率，RPO 接近零的災難恢復'
     },
     {
       id: 'A3',
-      title: '虛擬化成本失控，急需替代方案',
-      solution: 'HPE Morpheus VM Essentials，無痛VMware替代',
-      highlight: '節省 90% 授權成本，效能提升30%'
+      tag: '您的挑戰',
+      title: '虛擬化授權成本的預算壓力，該重新評估了',
+      solution: 'HPE Morpheus VM Essentials，無痛 VMware 替代',
+      highlight: '節省 90% 授權成本，效能提升 30%'
     },
     {
       id: 'A4',
-      title: 'AI 效能受限，GPU 使用率待提升',
-      solution: 'HPE AI-Ready Storage，專為AI工作負載設計',
+      tag: '您的挑戰',
+      title: 'AI 專案缺乏合適的儲存基礎架構',
+      solution: 'HPE AI-Ready Storage，專為 AI 工作負載設計',
       highlight: 'GPU 使用率提升到 95%，AI 訓練速度翻倍'
-    },
-    {
-      id: 'B1',
-      title: '資料治理與安全防護並重',
-      solution: '整合式資料保護平台，一站解決管理與安全',
-      highlight: '統一管理降低 60% 維運成本，安全等級提升 200%'
-    },
-    {
-      id: 'B2',
-      title: '數據管理成本雙優化',
-      solution: '統一資料平台降低複雜度與成本',
-      highlight: '管理效率提升 80%，總成本節省 65%'
-    },
-    {
-      id: 'B3',
-      title: '資料管理遇上AI加速',
-      solution: 'AI-Ready統一資料平台',
-      highlight: '資料處理速度提升 3 倍，AI 專案上線時間縮短50%'
     },
     {
       id: 'B4',
@@ -70,39 +50,16 @@
     },
     {
       id: 'B6',
-      title: '現代化轉型：成本控制與AI效能雙贏',
+      tag: '現代化轉型',
+      title: '成本控制與 AI 效能雙贏',
       solution: '高效能低成本存儲，專為新一代應用優化',
       highlight: '成本節省 90% 同時，AI 效能提升 3 倍'
     },
     {
-      id: 'C1',
-      title: '企業三大核心挑戰的整合解決方案',
-      solution: '全方位儲存平台，同時解決效率、安全、成本',
-      highlight: '整體 TCO 降低 75%，管理複雜度減少 80%'
-    },
-    {
-      id: 'C2',
-      title: '邁向智慧企業的全面升級',
-      solution: 'AI 驅動安全智慧儲存平台',
-      highlight: '企業數位轉型加速 200%，智慧化程度提升 10 倍'
-    },
-    {
-      id: 'C3',
-      title: '新一代企業數位基礎架構',
-      solution: '兼顧效率、成本、AI 的未來儲存',
-      highlight: 'AI Ready 基礎架構，投資回收期縮短 60%'
-    },
-    {
       id: 'C4',
-      title: '現代化IT基礎建設完整藍圖',
+      title: '現代化 IT 基礎建設完整藍圖',
       solution: '安全、經濟、智慧的儲存解決方案',
       highlight: '安全性 + 效能 + 成本三贏，未來擴展能力提升 500%'
-    },
-    {
-      id: 'C5',
-      title: '企業數位轉型的全方位儲存挑戰',
-      solution: 'HPE Storage 端到端解決方案，一次解決所有問題',
-      highlight: '全面數位轉型 → ROI 提升 500%'
     }
   ])
 
@@ -122,15 +79,10 @@
         class="font-bold HPEGraphikBold leading-tight tracking-wide flex items-center gap-2 pb-3 border-b border-[#D4D8DB]"
       >
         <span
+          v-if="selectedSolution.tag"
           class="inline-block text-base lg:text-lg 2xl:text-xl bg-linear-to-br from-[#00E0AF] to-[#62E5F6] text-black leading-none px-3 py-1 rounded-full"
         >
-          {{
-            selectedSolution.id && selectedSolution.id.includes('A')
-              ? '您的挑戰'
-              : selectedSolution.id.includes('B')
-                ? '雙重挑戰'
-                : '三大挑戰'
-          }}
+          {{ selectedSolution.tag }}
         </span>
         <span class="text-shadow-lg/30 text-white text-lg lg:text-xl 2xl:text-2xl">{{ selectedSolution.title }}</span>
       </h3>
@@ -150,6 +102,7 @@
       <ul class="w-full h-4/5 flex items-center justify-center gap-0.5">
         <li
           v-for="index in 10"
+          :key="index"
           class="w-1/20 h-full -skew-x-25"
           :class="{ 'bg-[#B1B9BE]': index < 5, 'border border-[#B1B9BE]': index >= 5 }"
         ></li>
@@ -161,6 +114,7 @@
       <ul class="w-full h-full flex items-center justify-center gap-0.5">
         <li
           v-for="index in 7"
+          :key="index"
           class="w-1 h-1 rounded-full"
           :class="{ 'bg-[#B1B9BE]': index < 3, 'border border-[#B1B9BE]': index >= 3 }"
         ></li>

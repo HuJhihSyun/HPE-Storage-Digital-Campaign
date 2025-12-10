@@ -8,7 +8,7 @@
   import databaseSvg from '@/assets/svg/database.svg?skipsvgo'
   import cogSvg from '@/assets/svg/cog.svg?skipsvgo'
   import bankSvg from '@/assets/svg/bank.svg?skipsvgo'
-  import ecoSvg from '@/assets/svg/eco.svg?skipsvgo'
+  import wifiSvg from '@/assets/svg/wifi.svg?skipsvgo'
   import story1Pic from '@/assets/images/story-1.jpg'
   import story2Pic from '@/assets/images/story-2.jpg'
   import story3Pic from '@/assets/images/story-3.jpg'
@@ -88,9 +88,17 @@
 
   const successStories: SuccessStory[] = [
     {
+      id: 'story-3',
+      title: '中華電信 IDC｜Zerto 秒級資料保護 × 分鐘級災難復原',
+      description: '將資料恢復時間從數週縮短到數分鐘，業務連續性的真實驗證',
+      icon: markRaw(wifiSvg),
+      image: story3Pic,
+      link: '#'
+    },
+    {
       id: 'story-1',
-      title: '製造業數位轉型實錄',
-      description: '35 年老廠如何用 HPE 打造智慧工廠',
+      title: '驊陞科技｜35年製造老廠的 AI 智慧工廠轉型之路',
+      description: '看傳統製造業如何建立能共同面對未來挑戰的數據夥伴關係',
       icon: markRaw(cogSvg),
       image: story1Pic,
       link: '#'
@@ -103,14 +111,7 @@
       image: story2Pic,
       link: '#'
     },
-    {
-      id: 'story-3',
-      title: '環保 NGO 的資料奇蹟',
-      description: '8 分鐘了解數據如何拯救濕地生態',
-      icon: markRaw(ecoSvg),
-      image: story3Pic,
-      link: '#'
-    }
+    
   ]
 </script>
 
@@ -220,10 +221,10 @@
                     </div>
                   </img>
                   <div class="w-full p-3">
-                    <h5 class="text-sm xl:text-base font-medium text-white HPEGraphikMedium line-clamp-1">
+                    <h5 class="text-[13px] md:text-sm xl:text-[15px] font-medium HPEGraphikMedium bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6]">
                       {{ story.title }}
                     </h5>
-                    <h6 class="text-xs xl:text-sm font-light text-white HPEGraphikRegular line-clamp-1">
+                    <h6 class="text-xs md:text-[13px] xl:text-sm font-light text-white HPEGraphikRegular mt-1">
                       {{ story.description }}
                     </h6>
                   </div>

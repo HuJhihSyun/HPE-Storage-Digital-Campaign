@@ -16,7 +16,7 @@
     cardSelected: () => []
   })
 
-  const indexMap = ['A', 'B', 'C', 'D']
+  const indexMap = ['B', 'C', 'D']
 
   const isCardSelected = computed(() => {
     const cardIndex = indexMap[props.index]
@@ -88,6 +88,7 @@
               <ul class="w-full h-full flex flex-col items-center justify-center gap-1 -translate-x-1/2">
                 <li
                   v-for="index in 5"
+                  :key="index"
                   class="w-1 h-1 rounded-full"
                   :class="{ 'bg-[#378C72]': index < 3, 'border border-[#378C72]': index >= 3 }"
                 ></li>
@@ -99,6 +100,7 @@
               <ul class="w-3/4 2xl:w-4/5 h-full flex flex-col items-center justify-start mt-1 gap-1 translate-x-1/2">
                 <li
                   v-for="index in 10"
+                  :key="index"
                   class="w-full h-1/20 -skew-y-25"
                   :class="{ 'bg-[#05CC93]': index < 5, 'border border-[#05CC93]': index >= 5 }"
                 ></li>
@@ -124,32 +126,13 @@
     perspective: 1200px; /* 3D 視角 */
 
     &-0 {
-      transform: translate(90%, 10%) rotate(-10deg);
-
-      @media screen and (max-width: 991px) {
-        transform: none;
-      }
+      transform: translate(30%, 5%) rotate(-5deg);
     }
     &-1 {
-      transform: translate(30%) rotate(-5deg);
-
-      @media screen and (max-width: 991px) {
-        transform: none;
-      }
+      transform: translate(0%) rotate(0deg);
     }
     &-2 {
-      transform: translate(-30%) rotate(5deg);
-
-      @media screen and (max-width: 991px) {
-        transform: none;
-      }
-    }
-    &-3 {
-      transform: translate(-90%, 10%) rotate(10deg);
-
-      @media screen and (max-width: 991px) {
-        transform: none;
-      }
+      transform: translate(-30%, 5%) rotate(5deg);
     }
   }
 

@@ -156,7 +156,7 @@
         </div>
 
         <transition name="fade" mode="out-in">
-          <div v-if="gameStep < GameStep.Loading" class="mt-15 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div v-if="gameStep < GameStep.Loading" class="mt-15 grid grid-cols-3 gap-4">
             <GameSectionCard
               v-for="(item, index) in cardData"
               :key="item.firstText"
