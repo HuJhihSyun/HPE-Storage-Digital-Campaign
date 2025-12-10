@@ -80,7 +80,7 @@
       >
         <span
           v-if="selectedSolution.tag"
-          class="inline-block text-base lg:text-lg 2xl:text-xl bg-linear-to-br from-[#00E0AF] to-[#62E5F6] text-black leading-none px-3 py-1 rounded-full"
+          class="inline-block text-base lg:text-lg 2xl:text-xl bg-linear-to-br from-[#00E0AF] to-[#62E5F6] text-black leading-none px-3 py-1 rounded-full whitespace-nowrap"
         >
           {{ selectedSolution.tag }}
         </span>

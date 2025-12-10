@@ -69,6 +69,7 @@
     cardStep.value = -1
     loadingPercent.value = 0
     cardSelected.splice(0, cardSelected.length)
+    finalAnswer.value = ''
     if (intervalId) clearInterval(intervalId)
   }
 
@@ -113,12 +114,31 @@
     }
   }
 
+  const finalAnswer = ref<string>('')
+
   const optionConfirm = () => {
     if (cardSelected.length === 0) {
       alert('請至少選擇一張卡片')
       return
     }
     gameStep.value = GameStep.SelectFinish
+
+    if (cardSelected.length === 1) {
+      finalAnswer.value =
+        cardSelected[0] === 'B' ? 'A2' : cardSelected[0] === 'C' ? 'A3' : cardSelected[0] === 'D' ? 'A4' : ''
+    } else if (cardSelected.length === 2) {
+      finalAnswer.value =
+        cardSelected.includes('B') && cardSelected.includes('C')
+          ? 'B4'
+          : cardSelected.includes('B') && cardSelected.includes('D')
+            ? 'B5'
+            : cardSelected.includes('C') && cardSelected.includes('D')
+              ? 'B6'
+              : ''
+    } else if (cardSelected.length === 3) {
+      finalAnswer.value = 'C4'
+    }
+
     setTimeout(() => {
       gameStep.value = GameStep.Loading
     }, 500)
@@ -197,7 +217,7 @@
         </transition>
         <transition name="fade" mode="out-in">
           <template v-if="gameStep === GameStep.Completed">
-            <GameAnswer :answer="'A1'" />
+            <GameAnswer :answer="finalAnswer" />
           </template>
         </transition>
 

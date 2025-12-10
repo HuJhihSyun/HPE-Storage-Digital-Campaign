@@ -324,9 +324,9 @@
           />
           <BasicInput
             v-model="formData.company"
-            label="所屬企業 (請填寫中文名稱)"
+            label="公司名字 (請填寫中文名稱)"
             :type="'text'"
-            placeholder="請輸入您的所屬企業"
+            placeholder="請輸入您的公司名字"
             required
             :error-message="errorMessages.company"
             :disabled="isFormSubmitSuccess"
@@ -496,7 +496,7 @@
 
           <ul class="m-0 p-0 flex flex-col gap-2 list-none">
             <h4 class="text-sm font-semibold text-white text-shadow-sm/20">
-              我熟讀下列 HPE
+              我已讀下列 HPE
               告知的個人資料保護事項並同意得提供個人上述報名資料提供予本活動之協辦廠商進行蒐集、處理及利用。
             </h4>
             <h4 class="text-sm font-semibold text-white text-shadow-sm/20">

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   import { Vue3Lottie } from 'vue3-lottie'
-  import featureSecurity from '@/assets/images/feature-security.json'
-  import featureAI from '@/assets/images/feature-ai2.json'
-  import featureBudget from '@/assets/images/feature-budget.json'
+  import featureSecurity from '@/assets/images/feature-security2.json'
+  import featureAI from '@/assets/images/feature-ai.json'
+  import featureBudget from '@/assets/images/feature-budget2.json'
   import dotsSvg from '@/assets/svg/dots.svg?skipsvgo'
 
   interface panelProps {

@@ -68,6 +68,4 @@ Q. Too big/wide slider on initialization [#3599](https://github.com/nolimits4web
 
 * 更換卡片選擇遊戲情境圖片
 * 卡牌排版調整與跑版確認
-* 製作卡牌遊戲選擇對應答案邏輯
 * 影片更換為圖檔並新增超連結
-* 三大情境之 lottie 圖檔更新
