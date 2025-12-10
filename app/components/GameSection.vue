@@ -20,7 +20,7 @@
     //   optionId: 'A'
     // },
     {
-      title: '100% 可用的數據資安防護',
+      title: '可用的數據資安防護',
       firstText: 'Cyber',
       secondText: 'Resilience',
       subtitle: '強化數位韌性，將資料恢復時間從數週縮短到數分鐘',
@@ -150,7 +150,7 @@
     class="w-full relative overflow-hidden before:absolute before:w-full before:min-h-[13vw] before:top-0 before:left-0 before:bg-linear-to-b before:from-[#292D3A] before:to-transparent before:content-[''] before:z-10 after:absolute after:w-full after:min-h-[13vw] after:bottom-0 after:left-0 after:bg-linear-to-t after:from-[#3E4350] after:to-transparent after:content-[''] after:z-10"
   >
     <video class="absolute top-0 left-0 w-full h-full object-cover z-[-1]" autoplay loop muted playsinline width="100%">
-      <source src="@/assets/images/wave-bg.mp4" type="video/mp4" />
+      <source src="@/assets/images/wave-bg.webm" type="video/webm" />
       您的瀏覽器不支援影片播放
     </video>
     <div class="relative w-full h-full flex items-center justify-center z-20">
@@ -158,9 +158,13 @@
       <div class="w-full md:w-7/10 2xl:w-3/4 h-full px-6 sm:px-12 md:px-6 lg:px-8 xl:px-12 py-20">
         <div class="w-full">
           <div
-            class="ai-heading inline-block pr-8 pl-40 lg:pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"
+            class="ai-heading inline-block pr-4 sm:pr-8 pl-4 sm:pl-40 lg:pl-30 py-3 bg-linear-to-b from-black/50 to-[#292D3A]/30 backdrop-blur-xs rounded-2xl"
           >
-            <img src="@/assets/images/robot.png" alt="robot" class="absolute left-4 bottom-0 w-30 lg:w-24" />
+            <img
+              src="@/assets/images/robot.png"
+              alt="robot"
+              class="absolute hidden sm:block left-4 bottom-0 w-30 lg:w-24"
+            />
             <h2 class="text-white font-bold">
               <span
                 class="text-3xl lg:text-4xl 2xl:text-5xl mr-1 xl:mr-2 bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] HPEGraphikBold"
@@ -176,7 +180,10 @@
         </div>
 
         <transition name="fade" mode="out-in">
-          <div v-if="gameStep < GameStep.Loading" class="mt-15 grid grid-cols-3 gap-4">
+          <div
+            v-if="gameStep < GameStep.Loading"
+            class="mt-15 2xl:px-20 grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4"
+          >
             <GameSectionCard
               v-for="(item, index) in cardData"
               :key="item.firstText"
@@ -197,8 +204,13 @@
         <transition name="fade" mode="out-in">
           <div
             v-if="gameStep === GameStep.Loading"
-            class="w-full flex flex-col justify-center items-center py-[8vw] mt-15"
+            class="w-full flex flex-col justify-center items-center py-[8vw] mt-14"
           >
+            <img
+              src="@/assets/images/robot-cute-2.png"
+              alt="robot"
+              class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 animate-bounce"
+            />
             <h6 class="text-white text-lg xl:text-xl flex justify-center items-center gap-2 tracking-wide">
               <LoaderSvg class="w-6 h-6 xl:w-8 xl:h-8 animate-spin" />
               {{ loadingTextArray[Math.floor(loadingPercent / 50)] }}

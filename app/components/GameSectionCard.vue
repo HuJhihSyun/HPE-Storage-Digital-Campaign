@@ -61,15 +61,18 @@
               />
               <div class="relative w-full h-full flex flex-col items-center justify-end z-10">
                 <h3
-                  class="w-full text-xl 2xl:text-2xl whitespace-nowrap bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#00E0AF] font-bold HPEGraphikSemiBold mb-0.5"
+                  class="w-full text-lg sm:text-base lg:text-xl 2xl:text-2xl whitespace-nowrap text-[#00E0AF] text-shadow-lg/50 font-bold HPEGraphikSemiBold mb-0.5"
                 >
+                  <p v-if="index == 0" class="leading-none">100%</p>
                   <slot name="title"></slot>
                 </h3>
-                <h4
-                  class="w-full p-2 text-xs 2xl:text-sm tracking-wide bg-linear-to-br from-[#02543F]/50 to-[#01A982]/50 rounded-lg border border-[#D4D8DB]/70"
+                <div
+                  class="w-full p-2 bg-linear-to-br from-[#02543F]/50 to-[#01A982]/50 rounded-lg border border-[#D4D8DB]/70"
                 >
-                  <slot name="subtitle"></slot>
-                </h4>
+                  <h4 class="text-xs sm:text-[10px] lg:text-xs xl:text-sm 2xl:text-sm tracking-wide line-clamp-2">
+                    <slot name="subtitle"></slot>
+                  </h4>
+                </div>
               </div>
               <h6
                 class="absolute left-0 top-1/3 [writing-mode:vertical-lr] HPEGraphikBold text-xl 2xl:text-2xl text-transparent font-bold [text-stroke:1px_#01a982] [-webkit-text-stroke:1px_#01a982]"
@@ -107,9 +110,9 @@
               </ul>
             </div>
           </div>
-          <div class="bg-linear-to-r from-[#024c39] to-[#01a982] px-3 pb-3">
+          <div class="w-full bg-linear-to-r from-[#024c39] to-[#01a982] px-3 pb-3">
             <div class="w-full border border-[#05CC93] rounded-lg py-1.5 px-2 bg-white/5">
-              <p class="text-xs 2xl:text-sm text-white/90 font-normal line-clamp-2">
+              <p class="text-xs sm:text-[10px] lg:text-xs 2xl:text-sm text-white/90 font-normal line-clamp-2">
                 <slot name="description"></slot>
               </p>
             </div>
@@ -127,12 +130,17 @@
 
     &-0 {
       transform: translate(30%, 5%) rotate(-5deg);
-    }
-    &-1 {
-      transform: translate(0%) rotate(0deg);
+
+      @media screen and (max-width: 639px) {
+        transform: none;
+      }
     }
     &-2 {
       transform: translate(-30%, 5%) rotate(5deg);
+
+      @media screen and (max-width: 639px) {
+        transform: none;
+      }
     }
   }
 

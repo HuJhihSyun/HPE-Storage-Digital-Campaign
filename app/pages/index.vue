@@ -84,12 +84,12 @@
           <div class="w-full md:w-7/10 2xl:w-3/4 px-6 sm:px-12 md:px-6 lg:px-8 xl:px-12 h-full">
             <DigitalPattern class="mb-4" />
             <h1
-              class="text-white text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-5 HPEGraphikBold leading-tight text-shadow-lg/30 tracking-wide"
+              class="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-5 HPEGraphikBold leading-tight text-shadow-lg/30 tracking-wide"
             >
               迎戰 AI 時代，<br />先解決 CIO 最頭痛的三件事
             </h1>
             <div
-              class="banner-heading mb-16 text-xl lg:text-3xl 2xl:text-4xl font-semibold HPEGraphikSemiBold leading-tight text-shadow-lg tracking-wide py-3 px-6 w-full sm:w-4/5 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-2xl after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
+              class="banner-heading mb-16 text-base sm:text-lg md:text-xl lg:text-3xl 2xl:text-4xl font-semibold HPEGraphikSemiBold leading-tight text-shadow-lg tracking-wide py-3 px-6 w-full sm:w-4/5 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-2xl after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
             >
               <h2 class="inline-block bg-clip-text text-transparent bg-linear-to-br from-[#00E0AF] to-[#62E5F6] to-70%">
                 <span class="whitespace-nowrap mr-4 md:mr-6 lg:mr-8">√ 新型態 VM 虛擬私有雲</span>

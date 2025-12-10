@@ -66,6 +66,8 @@ Q. Too big/wide slider on initialization [#3599](https://github.com/nolimits4web
 
 # 待執行項目 Todo List
 
-* 更換卡片選擇遊戲情境圖片
-* 卡牌排版調整與跑版確認
-* 影片更換為圖檔並新增超連結
+* 滑動至區塊功能
+* Answer 行動版版面調整
+* Feature 行動版版面調整
+* menuPanel 行動版版面調整
+* submitPanel 行動版版面調整

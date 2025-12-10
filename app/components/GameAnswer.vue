@@ -1,4 +1,12 @@
 <script lang="ts" setup>
+  import A2 from '@/assets/images/A2.jpg'
+  import A3 from '@/assets/images/A3.jpg'
+  import A4 from '@/assets/images/A4.jpg'
+  import B4 from '@/assets/images/B4.jpg'
+  import B5 from '@/assets/images/B5.jpg'
+  import B6 from '@/assets/images/B6.jpg'
+  import C4 from '@/assets/images/C4.jpg'
+
   interface answerProps {
     answer: string
   }
@@ -12,6 +20,7 @@
     title: string
     solution: string
     highlight: string
+    image: string
   }
 
   const solutionData = reactive<Solution[]>([
@@ -20,46 +29,53 @@
       tag: '您的挑戰',
       title: '資安防護存在缺口，急需加強',
       solution: '符合 NIST 2.0 五層防護資安框架架構，從識別到恢復，全面抵禦勒索病毒',
-      highlight: '99.9% 防護成功率，RPO 接近零的災難恢復'
+      highlight: '99.9% 防護成功率，RPO 接近零的災難恢復',
+      image: A2
     },
     {
       id: 'A3',
       tag: '您的挑戰',
       title: '虛擬化授權成本的預算壓力，該重新評估了',
       solution: 'HPE Morpheus VM Essentials，無痛 VMware 替代',
-      highlight: '節省 90% 授權成本，效能提升 30%'
+      highlight: '節省 90% 授權成本，效能提升 30%',
+      image: A3
     },
     {
       id: 'A4',
       tag: '您的挑戰',
       title: 'AI 專案缺乏合適的儲存基礎架構',
       solution: 'HPE AI-Ready Storage，專為 AI 工作負載設計',
-      highlight: 'GPU 使用率提升到 95%，AI 訓練速度翻倍'
+      highlight: 'GPU 使用率提升到 95%，AI 訓練速度翻倍',
+      image: A4
     },
     {
       id: 'B4',
       title: '安全與成本平衡之道',
       solution: '高安全性低成本儲存解決方案',
-      highlight: '安全投資 ROI 提升 400%，防護成本降低 45%'
+      highlight: '安全投資 ROI 提升 400%，防護成本降低 45%',
+      image: B4
     },
     {
       id: 'B5',
       title: 'AI 時代的安全防護',
       solution: 'AI 驅動的安全儲存架構',
-      highlight: 'AI 安全分析能力提升 5 倍，威脅識別準確率 99.8%'
+      highlight: 'AI 安全分析能力提升 5 倍，威脅識別準確率 99.8%',
+      image: B5
     },
     {
       id: 'B6',
       tag: '現代化轉型',
       title: '成本控制與 AI 效能雙贏',
       solution: '高效能低成本存儲，專為新一代應用優化',
-      highlight: '成本節省 90% 同時，AI 效能提升 3 倍'
+      highlight: '成本節省 90% 同時，AI 效能提升 3 倍',
+      image: B6
     },
     {
       id: 'C4',
       title: '現代化 IT 基礎建設完整藍圖',
       solution: '安全、經濟、智慧的儲存解決方案',
-      highlight: '安全性 + 效能 + 成本三贏，未來擴展能力提升 500%'
+      highlight: '安全性 + 效能 + 成本三贏，未來擴展能力提升 500%',
+      image: C4
     }
   ])
 
@@ -72,7 +88,10 @@
   <div
     class="w-full flex justify-center items-center py-4 pl-4 pr-4 lg:pr-6 xl:pr-8 mt-15 bg-linear-to-br from-black/50 to-[#292d3a]/50 backdrop-blur-xs border-[#F7F7F7] border rounded-2xl gap-4 lg:gap-6 xl:gap-8 after:absolute after:content-[''] after:w-1/10 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10 before:absolute before:content-[''] before:w-1/5 before:h-1 before:rounded-full before:bg-linear-to-r before:from-[#00E0AF] before:to-[#62E5F6] before:bottom-0 before:translate-y-1/2 before:-translate-x-1/2 before:left-1/2"
   >
-    <div class="w-2/5 aspect-3/2 bg-white rounded-xl"></div>
+    <div v-if="selectedSolution" class="w-2/5">
+      <img :src="selectedSolution.image" :alt="selectedSolution.title" class="aspect-3/2 bg-white rounded-xl" />
+    </div>
+
     <div v-if="selectedSolution" class="w-3/5">
       <DigitalPattern class="mb-4" />
       <h3
@@ -88,7 +107,7 @@
       </h3>
       <p class="mt-4 text-white text-sm lg:text-base 2xl:text-lg">{{ selectedSolution.solution }}</p>
       <div
-        class="banner-heading text-base 2xl:text-lg font-medium HPEGraphikSemiBold text-shadow-lg tracking-wide py-1.5 px-2 mt-4 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-full z-10 after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
+        class="banner-heading text-base 2xl:text-lg font-medium HPEGraphikSemiBold text-shadow-lg tracking-wide py-1.5 px-2 md:px-4 mt-4 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-full z-10 after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
       >
         <h4 class="inline-block bg-clip-text text-transparent bg-linear-to-br from-[#00E0AF] to-[#62E5F6] to-70%">
           {{ selectedSolution.highlight }}
