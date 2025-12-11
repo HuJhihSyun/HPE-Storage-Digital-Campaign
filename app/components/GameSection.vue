@@ -56,7 +56,7 @@
 
   const gameStep = ref<GameStep>(GameStep.Initial)
   const cardStep = ref<number>(-1)
-  let intervalId: number | undefined
+  let intervalId: ReturnType<typeof setInterval> | undefined
   const loadingPercent = ref<number>(0)
   const loadingTextArray = ref<string[]>(['正在分析您的儲存環境...', '找出潛在風險點...'])
 
@@ -141,6 +141,10 @@
 
     setTimeout(() => {
       gameStep.value = GameStep.Loading
+      document.getElementById(`game-section`)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
     }, 500)
   }
 </script>
@@ -246,7 +250,7 @@
               <div
                 class="flex justify-center items-center gap-2 bg-linear-to-br from-[#0070F8]/50 via-[#292D3A]/50 to-[#292D3A]/50 pr-2 pl-6 py-2 rounded-full"
               >
-                <h5 class="text-base text-gray-200">
+                <h5 class="text-sm sm:text-base text-gray-200">
                   <template v-if="!cardSelected.length">
                     請點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選）
                   </template>
@@ -260,7 +264,7 @@
                   :class="{ 'pointer-events-none disabled': cardSelected.length === 0 }"
                   @click="optionConfirm"
                 >
-                  <span class="text-lg">確認</span>
+                  <span class="text-lg whitespace-nowrap">確認</span>
                 </button>
               </div>
             </template>

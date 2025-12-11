@@ -273,7 +273,7 @@
             class="inline-block pl-4 pr-4 sm:pl-8 sm:pr-40 lg:pr-30 pb-3 pt-2 bg-linear-to-b from-[#01A982]/50 to-[#0070F8]/30 backdrop-blur-xs rounded-2xl border border-[#00E0AF]"
           >
             <img src="@/assets/images/robot-r.png" alt="robot" class="absolute hidden sm:block right-4 bottom-0 w-30 lg:w-24" />
-            <h2 class="text-white text-base sm:text-lg lg:text-xl 2xl:text-2xl font-bold">
+            <h2 class="text-white text-sm sm:text-lg lg:text-xl 2xl:text-2xl font-bold">
               立即行動，搶先體驗業界唯一
               <span
                 class="text-2xl lg:text-3xl 2xl:text-4xl bg-clip-text text-transparent bg-linear-to-b from-white to-[#D4D8DB] HPEGraphikSemiBold"
@@ -285,7 +285,7 @@
               <span class="HPEGraphikRegular">HPE</span> 將為您提供現況評估與痛點診斷、客製化解決方案建議、<span class="HPEGraphikRegular">ROI</span> 試算與成本分析、成功案例分享
             </h5>
           </div>
-          <h6 class="text-right text-xs text-[#62E5F6] mt-2 text-shadow-2xs/30">加碼好康：完整參與卡牌占卜診斷、填寫問卷，科技好禮等你拿！</h6>
+          <h6 class="text-right text-[11px] sm:text-xs text-[#62E5F6] mt-2 text-shadow-2xs/30">加碼好康：完整參與卡牌占卜診斷、填寫問卷，科技好禮等你拿！</h6>
             </div>
           </div>
         </div>

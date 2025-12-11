@@ -35,7 +35,7 @@
         class="text-lg xl:text-xl 2xl:text-2xl font-semibold bg-clip-text text-transparent bg-linear-to-bl from-[#0070F8] to-[#62E5F6] HPEGraphikSemiBold"
       >
         <slot name="title" /><span
-          class="block sm:inline-block text-xs xl:text-sm text-[#62E5F6] HPEGraphikRegular sm:ml-2"
+          class="block sm:inline-block text-sm sm:text-xs xl:text-sm text-[#62E5F6] HPEGraphikRegular sm:ml-2"
           ><slot name="subtitle"
         /></span>
       </h3>

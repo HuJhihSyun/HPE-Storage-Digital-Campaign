@@ -32,7 +32,7 @@
     <footer
       class="w-full bg-black flex justify-center md:justify-end lg:justify-center items-center py-3 px-6 lg:px-8 xl:px-12"
     >
-      <p class="text-white text-xs HPEGraphikRegular">{{ config.public.copyright }}</p>
+      <p class="text-white text-center text-[10px] sm:text-xs HPEGraphikRegular">{{ config.public.copyright }}</p>
     </footer>
   </div>
 </template>

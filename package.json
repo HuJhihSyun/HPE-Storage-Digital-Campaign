@@ -19,6 +19,7 @@
     "vue3-lottie": "^3.3.1"
   },
   "devDependencies": {
+    "@types/node": "^25.0.0",
     "@typescript-eslint/eslint-plugin": "^8.48.0",
     "@typescript-eslint/parser": "^8.48.0",
     "@vueuse/core": "^14.1.0",
