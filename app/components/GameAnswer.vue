@@ -86,13 +86,13 @@
 
 <template>
   <div
-    class="w-full flex justify-center items-center py-4 pl-4 pr-4 lg:pr-6 xl:pr-8 mt-15 bg-linear-to-br from-black/50 to-[#292d3a]/50 backdrop-blur-xs border-[#F7F7F7] border rounded-2xl gap-4 lg:gap-6 xl:gap-8 after:absolute after:content-[''] after:w-1/10 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10 before:absolute before:content-[''] before:w-1/5 before:h-1 before:rounded-full before:bg-linear-to-r before:from-[#00E0AF] before:to-[#62E5F6] before:bottom-0 before:translate-y-1/2 before:-translate-x-1/2 before:left-1/2"
+    class="w-full flex flex-col sm:flex-row justify-center items-center py-6 sm:py-4 pl-4 pr-4 lg:pr-6 xl:pr-8 mt-15 bg-linear-to-br from-black/50 to-[#292d3a]/50 backdrop-blur-xs border-[#F7F7F7] border rounded-2xl gap-4 lg:gap-6 xl:gap-8 after:absolute after:content-[''] after:w-1/10 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10 before:absolute before:content-[''] before:w-1/5 before:h-1 before:rounded-full before:bg-linear-to-r before:from-[#00E0AF] before:to-[#62E5F6] before:bottom-0 before:translate-y-1/2 before:-translate-x-1/2 before:left-1/2"
   >
-    <div v-if="selectedSolution" class="w-2/5">
+    <div v-if="selectedSolution" class="w-full sm:w-2/5">
       <img :src="selectedSolution.image" :alt="selectedSolution.title" class="aspect-3/2 bg-white rounded-xl" />
     </div>
 
-    <div v-if="selectedSolution" class="w-3/5">
+    <div v-if="selectedSolution" class="w-full sm:w-3/5">
       <DigitalPattern class="mb-4" />
       <h3
         class="font-bold HPEGraphikBold leading-tight tracking-wide flex items-center gap-2 pb-3 border-b border-[#D4D8DB]"
@@ -116,7 +116,7 @@
     </div>
 
     <div
-      class="absolute bottom-0 right-0 w-1/8 h-4 bg-[#F7F7F7] before:absolute before:content-[''] before:top-0 before:left-0 before:-translate-x-full before:w-0 before:h-0 before:border-solid before:border-t-0 before:border-r-0 before:border-b-16 before:border-l-10 before:border-t-transparent before:border-r-transparent before:border-b-[#F7F7F7] before:border-l-transparent flex justify-center items-center rounded-br-xl"
+      class="absolute bottom-0 right-0 w-1/4 sm:w-1/8 h-4 bg-[#F7F7F7] before:absolute before:content-[''] before:top-0 before:left-0 before:-translate-x-full before:w-0 before:h-0 before:border-solid before:border-t-0 before:border-r-0 before:border-b-16 before:border-l-10 before:border-t-transparent before:border-r-transparent before:border-b-[#F7F7F7] before:border-l-transparent flex justify-center items-center rounded-br-xl"
     >
       <ul class="w-full h-4/5 flex items-center justify-center gap-0.5">
         <li
@@ -128,7 +128,7 @@
       </ul>
     </div>
     <div
-      class="absolute top-0 right-1/4 w-1/16 h-3 bg-[#F7F7F7] flex justify-center items-center before:absolute before:content-[''] before:top-0 before:left-0 before:-translate-x-full before:w-0 before:h-0 before:border-solid before:border-t-12 before:border-r-0 before:border-b-0 before:border-l-5 before:border-t-[#F7F7F7] before:border-r-transparent before:border-b-transparent before:border-l-transparent after:absolute after:content-[''] after:top-0 after:right-0 after:translate-x-full after:w-0 after:h-0 after:border-solid after:border-t-12 after:border-r-5 after:border-b-0 after:border-l-0 after:border-t-[#F7F7F7] after:border-r-transparent after:border-b-transparent after:border-l-transparent"
+      class="absolute top-0 right-1/4 w-1/8 sm:w-1/16 h-3 bg-[#F7F7F7] flex justify-center items-center before:absolute before:content-[''] before:top-0 before:left-0 before:-translate-x-full before:w-0 before:h-0 before:border-solid before:border-t-12 before:border-r-0 before:border-b-0 before:border-l-5 before:border-t-[#F7F7F7] before:border-r-transparent before:border-b-transparent before:border-l-transparent after:absolute after:content-[''] after:top-0 after:right-0 after:translate-x-full after:w-0 after:h-0 after:border-solid after:border-t-12 after:border-r-5 after:border-b-0 after:border-l-0 after:border-t-[#F7F7F7] after:border-r-transparent after:border-b-transparent after:border-l-transparent"
     >
       <ul class="w-full h-full flex items-center justify-center gap-0.5">
         <li

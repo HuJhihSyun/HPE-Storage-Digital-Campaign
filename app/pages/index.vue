@@ -113,9 +113,9 @@
           <div class="flex flex-col lg:flex-row justify-center items-center my-15">
             <div class="w-full lg:w-3/10">
               <h2
-                class="relative text-white text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/10 lg:before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-3 lg:pt-5 backdrop-blur-[2px]"
+                class="relative text-white text-xl sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/10 lg:before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-3 lg:pt-5 backdrop-blur-[2px]"
               >
-                這些資料管理挑戰，<br class="hidden lg:block" />是不是讓您非常頭痛？
+                這些資料管理挑戰，<br class="block sm:hidden lg:block" />是不是讓您非常頭痛？
               </h2>
               <client-only>
                 <div class="w-3/4 hidden lg:block">

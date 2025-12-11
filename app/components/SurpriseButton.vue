@@ -5,7 +5,7 @@
     href="https://forms.gle/2e3GoPMxkrLGgWte8"
     target="_blank"
     rel="noopener noreferrer"
-    class="fixed inline-block bottom-2 right-2 lg:bottom-4 lg:right-4 z-70 group animate-bounce hover:animate-none"
+    class="fixed inline-block bottom-2 right-2 lg:bottom-4 lg:right-4 z-40 group animate-bounce hover:animate-none"
   >
     <div class="absolute right-0 bottom-0 flex flex-col justify-center items-center gap-1">
       <div

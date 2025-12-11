@@ -1,14 +1,28 @@
 <script setup lang="ts">
   interface MenuItems {
     name: string
-    link: string
     id: string
-    target?: string
+    function: () => void | string
   }
 
   const menuItems: MenuItems[] = [
-    { name: '互動遊戲', link: '#', id: 'game', target: '_self' },
-    { name: '點擊有好康', link: 'https://forms.gle/2e3GoPMxkrLGgWte8', id: 'lottery', target: '_blank' }
+    {
+      name: '互動遊戲',
+      function: () => {
+        document.getElementById(`game-section`)?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        })
+      },
+      id: 'game'
+    },
+    {
+      name: '點擊有好康',
+      function: () => {
+        window.open('https://forms.gle/2e3GoPMxkrLGgWte8', '_blank')
+      },
+      id: 'lottery'
+    }
   ]
 
   // 活動開始時間 2025 年 12 月 29 日 12:00
@@ -47,15 +61,16 @@
 
 <template>
   <nav
-    class="inline-block bg-linear-to-bl from-white/10 to-white/30 border border-white rounded-full py-2 lg:py-4 px-4 lg:px-6 xl:px-10 backdrop-blur-sm"
+    class="w-full sm:w-auto inline-block bg-linear-to-bl from-white/10 to-white/30 border border-white rounded-full py-2 lg:py-4 px-4 lg:px-6 xl:px-10 backdrop-blur-sm"
   >
     <ul class="flex justify-center items-center text-sm md:text-base xl:text-lg divide-x divide-white gap-4">
       <li
-        v-for="item in menuItems"
+        v-for="(item, index) in menuItems"
         :key="item.id"
         class="text-white hover:text-[#62E5F6] pr-4 whitespace-nowrap pointer-events-auto"
+        :class="{ 'hidden sm:inline-block': index === 0, 'hidden lg:inline-block': index === 1 }"
       >
-        <a :href="item.link" :target="item.target" rel="noopener noreferrer">{{ item.name }}</a>
+        <a @click="item.function" class="cursor-pointer">{{ item.name }}</a>
       </li>
       <li class="text-white pr-4 flex justify-center items-center gap-2">
         <span class="whitespace-nowrap">{{
@@ -64,17 +79,17 @@
         <client-only>
           <div class="flex justify-center items-center gap-2 xl:gap-3">
             <span
-              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
+              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl sm:text-4xl md:text-3xl lg:text-4xl 2xl:text-5xl HPEGraphikBold whitespace-nowrap"
               >{{ days }}</span
             >
             天
             <span
-              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
+              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl sm:text-4xl md:text-3xl lg:text-4xl 2xl:text-5xl HPEGraphikBold whitespace-nowrap"
               >{{ hours }}</span
             >
             時
             <span
-              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl HPEGraphikBold whitespace-nowrap"
+              class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl sm:text-4xl md:text-3xl lg:text-4xl 2xl:text-5xl HPEGraphikBold whitespace-nowrap"
               >{{ minutes }}</span
             >
             分

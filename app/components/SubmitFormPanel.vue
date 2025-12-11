@@ -61,7 +61,7 @@
   const formHeight = computed(() => {
     return currentWindowInnerWidth.value > 767
       ? panelHeight.value - (210 + titleHeight.value)
-      : panelHeight.value - (180 + titleHeight.value) // 扣除標題與按鈕區域高度
+      : panelHeight.value - (210 + titleHeight.value) // 扣除標題與按鈕區域高度
   })
 
   const formData = reactive({
@@ -289,7 +289,7 @@
 
 <template>
   <aside
-    class="submit-form-panel fixed top-4 left-4 md:top-2 md:left-2 lg:top-4 lg:left-4 2xl:top-4 2xl:left-4 py-4 px-3 lg:px-5 bg-linear-to-br from-white/70 to-white/20 backdrop-blur-sm rounded-2xl pointer-events-none z-50"
+    class="submit-form-panel fixed top-1/2 left-1/2 -translate-1/2 md:top-2 md:left-2 md:translate-0 lg:top-4 lg:left-4 2xl:top-4 2xl:left-4 py-4 px-3 lg:px-5 bg-linear-to-br from-white/70 to-white/20 backdrop-blur-sm rounded-2xl pointer-events-none z-50"
     :style="{ width: panelWidth + 'px', height: panelHeight + 'px' }"
   >
     <div class="w-full md:pt-2 pb-3 md:pb-5 border-b border-b-white flex justify-between items-center">

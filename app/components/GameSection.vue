@@ -147,6 +147,7 @@
 
 <template>
   <section
+    id="game-section"
     class="w-full relative overflow-hidden before:absolute before:w-full before:min-h-[13vw] before:top-0 before:left-0 before:bg-linear-to-b before:from-[#292D3A] before:to-transparent before:content-[''] before:z-10 after:absolute after:w-full after:min-h-[13vw] after:bottom-0 after:left-0 after:bg-linear-to-t after:from-[#3E4350] after:to-transparent after:content-[''] after:z-10"
   >
     <video class="absolute top-0 left-0 w-full h-full object-cover z-[-1]" autoplay loop muted playsinline width="100%">
@@ -206,17 +207,13 @@
             v-if="gameStep === GameStep.Loading"
             class="w-full flex flex-col justify-center items-center py-[8vw] mt-14"
           >
-            <img
-              src="@/assets/images/robot-cute-2.png"
-              alt="robot"
-              class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 animate-bounce"
-            />
+            <img src="@/assets/images/robot-cute-2.png" alt="robot" class="w-20 h-20 lg:w-24 lg:h-24 animate-bounce" />
             <h6 class="text-white text-lg xl:text-xl flex justify-center items-center gap-2 tracking-wide">
               <LoaderSvg class="w-6 h-6 xl:w-8 xl:h-8 animate-spin" />
               {{ loadingTextArray[Math.floor(loadingPercent / 50)] }}
             </h6>
             <div
-              class="w-2/5 h-6 mt-6 rounded-full bg-linear-to-tr from-[#0070F8]/70 via-[#292D3A]/50 to-[#292D3A]/50 p-1.5"
+              class="w-4/5 md:w-2/5 h-6 mt-6 rounded-full bg-linear-to-tr from-[#0070F8]/70 via-[#292D3A]/50 to-[#292D3A]/50 p-1.5"
             >
               <div class="relative w-full h-full">
                 <div
