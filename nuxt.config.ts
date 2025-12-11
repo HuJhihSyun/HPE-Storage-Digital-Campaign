@@ -12,7 +12,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       title: '迎戰AI時代，先解決CIO最頭痛的三件事',
-      description: '√ 新型態VM虛擬私有雲 √ 資安數據保護100% √ AI數據平台',
+      description:
+        '新型態VM虛擬私有雲、資安數據保護100%、AI數據平台，讓HPE專家為您評估現況與痛點，快速掌握AI時代的資料管理、安全儲存方法。100%可用的數據資安防護 Cyber Resilience、新型態虛擬化策略 VMware Alternative、AI數據平台就緒 AI Data Platform，30 秒快速診斷：您的數據基礎架構準備好面對未來挑戰了嗎？',
       copyright: '© Copyright 2025 Hewlett Packard Enterprise Development LP'
     }
   },

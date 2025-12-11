@@ -1,11 +1,17 @@
 <script setup lang="ts">
+  import imageCover from '@/assets/images/image-cover.jpg'
+
   const config = useRuntimeConfig()
 
   useSeoMeta({
     title: config.public.title,
     description: config.public.description,
     ogTitle: config.public.title,
-    ogDescription: config.public.description
+    ogDescription: config.public.description,
+    ogImage: imageCover,
+    ogUrl: 'https://accessus.cloud/HPE-Storage-Digital-Campaign/',
+    keywords:
+      'HPE Storage,數位轉型,AI時代,數據資安,虛擬化策略,AI數據平台,VMware Alternative,Cyber Resilience,AI Data Platform,企業儲存解決方案'
   })
 
   const isInitial = ref(true)
