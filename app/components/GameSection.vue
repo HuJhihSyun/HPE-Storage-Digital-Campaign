@@ -7,24 +7,18 @@
     secondText: string
     subtitle: string
     description: string
+    problem?: Array<string>
     optionId: string
   }
 
   const cardData: CardInfo[] = [
-    // {
-    //   title: '資料管理混亂',
-    //   firstText: 'Data',
-    //   secondText: 'Data',
-    //   subtitle: '資料散落各處，治理效率下降',
-    //   description: '企業資料散布在不同系統、找不到關鍵資訊、備份時間冗長',
-    //   optionId: 'A'
-    // },
     {
       title: '可用的數據資安防護',
       firstText: 'Cyber',
       secondText: 'Resilience',
       subtitle: '強化數位韌性，將資料恢復時間從數週縮短到數分鐘',
       description: '擔心勒索病毒攻擊、確保資料安全合規、快速災難復原',
+      problem: ['資安', '備援'],
       optionId: 'B'
     },
     {
@@ -33,6 +27,7 @@
       secondText: 'Alternative',
       subtitle: '不必被單一方案綁定，重新評估虛擬化成本結構',
       description: 'VMware 授權費暴漲、尋找高效能替代方案、控制總擁有成本',
+      problem: ['虛擬化', '成本'],
       optionId: 'C'
     },
     {
@@ -41,6 +36,7 @@
       secondText: 'Platform',
       subtitle: '為 AI 工作負載打造高效能儲存基礎建置',
       description: 'AI 應用加速落地，企業需要更完整的數據平台支援',
+      problem: ['AI', '效能'],
       optionId: 'D'
     }
   ]
@@ -179,7 +175,7 @@
               <span class="text-lg lg:text-xl 2xl:text-2xl">您的數據基礎架構準備好面對未來挑戰了嗎？</span>
             </h2>
             <h5 class="text-sm md:text-base lg:text-lg text-[#E6E8E9] mt-1 ml-1">
-              點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選），根據選擇組合，跳出對應診斷結果
+              點選 <span class="HPEGraphikRegular">1-3</span> 張卡片（可複選），根據選擇組合，跳出對應診斷結果
             </h5>
           </div>
         </div>
@@ -196,6 +192,7 @@
               :game-step="gameStep"
               :card-step="cardStep"
               :card-selected="cardSelected"
+              :problem="item.problem"
               @click="selectCard(item.optionId)"
             >
               <template #title>{{ item.title }}</template>
@@ -252,7 +249,7 @@
               >
                 <h5 class="text-sm sm:text-base text-gray-200">
                   <template v-if="!cardSelected.length">
-                    請點選 <span class="HPEGraphikRegular">1-4</span> 張卡片（可複選）
+                    請點選 <span class="HPEGraphikRegular">1-3</span> 張卡片（可複選）
                   </template>
                   <template v-else-if="cardSelected.length"
                     >已選擇 <span class="HPEGraphikRegular">{{ cardSelected.length }}</span> 張卡片

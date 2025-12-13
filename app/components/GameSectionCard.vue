@@ -2,18 +2,24 @@
   import card1Img from '@/assets/images/card-1.jpg'
   import card2Img from '@/assets/images/card-2.jpg'
   import card3Img from '@/assets/images/card-3.jpg'
+  import card1ImgM from '@/assets/images/card-1-m.jpg'
+  import card2ImgM from '@/assets/images/card-2-m.jpg'
+  import card3ImgM from '@/assets/images/card-3-m.jpg'
+  import LogoSvgo from '@/assets/svg/logo-color.svg?skipsvgo'
 
   interface cardProps {
     index: number
     gameStep: number
     cardStep: number
     cardSelected?: string[]
+    problem?: string[]
   }
   const props = withDefaults(defineProps<cardProps>(), {
     index: 0,
     gameStep: 0,
     cardStep: 0,
-    cardSelected: () => []
+    cardSelected: () => [],
+    problem: () => []
   })
 
   const indexMap = ['B', 'C', 'D']
@@ -30,8 +36,8 @@
     :class="[
       gameStep === 0 ? `card-wrap-${index}` : '',
       {
-        'hover:shadow-lg hover:shadow-cyan-500/80 hover:-translate-y-1': gameStep === 2 && !isCardSelected,
-        'shadow-lg shadow-cyan-200/90 -translate-y-2 scale-[1.02]': isCardSelected
+        'hover:shadow-lg hover:shadow-cyan-500/80 sm:hover:-translate-y-1': gameStep === 2 && !isCardSelected,
+        'shadow-lg shadow-cyan-200/90 sm:-translate-y-2 sm:scale-[1.02]': isCardSelected
       }
     ]"
   >
@@ -47,7 +53,8 @@
       aria-pressed="false"
     >
       <div class="face front">
-        <img src="@/assets/images/card-cover.jpg" alt="cover" width="100%" />
+        <img src="@/assets/images/card-cover.jpg" alt="cover" width="100%" class="hidden sm:block" />
+        <img src="@/assets/images/card-cover-m.jpg" alt="cover" width="100%" class="block sm:hidden" />
       </div>
       <div class="face back">
         <div class="inner w-full flex flex-col items-center justify-center h-full">
@@ -57,20 +64,30 @@
                 :src="index == 0 ? card1Img : index == 1 ? card2Img : card3Img"
                 alt="content"
                 width="100%"
-                class="absolute left-1/2 top-1/2 -translate-1/2 object-cover z-0"
+                class="absolute hidden sm:block left-1/2 top-1/2 -translate-1/2 object-cover z-0"
+              />
+              <img
+                :src="index == 0 ? card1ImgM : index == 1 ? card2ImgM : card3ImgM"
+                alt="content"
+                width="100%"
+                class="absolute block sm:hidden left-1/2 top-1/2 -translate-1/2 object-cover z-0"
               />
               <div class="relative w-full h-full flex flex-col items-center justify-end z-10">
                 <h3
-                  class="w-full text-lg sm:text-base lg:text-xl 2xl:text-2xl whitespace-nowrap text-[#00E0AF] text-shadow-lg/50 font-bold HPEGraphikSemiBold mb-0.5"
+                  class="w-full text-lg sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl whitespace-nowrap text-[#00E0AF] text-shadow-lg/30 font-bold HPEGraphikSemiBold flex items-center justify-start gap-1 flex-wrap leading-none mb-1"
                 >
-                  <p v-if="index == 0" class="leading-none">100%</p>
-                  <slot name="title"></slot>
+                  <span>
+                    <slot name="firstText"></slot>
+                  </span>
+                  <span><slot name="secondText"></slot></span>
                 </h3>
                 <div
                   class="w-full p-2 bg-linear-to-br from-[#02543F]/50 to-[#01A982]/50 rounded-lg border border-[#D4D8DB]/70"
                 >
-                  <h4 class="text-xs sm:text-[10px] lg:text-xs xl:text-sm 2xl:text-sm tracking-wide line-clamp-2">
-                    <slot name="subtitle"></slot>
+                  <h4
+                    class="text-xs sm:text-[10px] lg:text-xs xl:text-sm 2xl:text-sm tracking-normal xl:tracking-tighter 2xl:tracking-wide"
+                  >
+                    <slot name="description"></slot>
                   </h4>
                 </div>
               </div>
@@ -110,11 +127,25 @@
               </ul>
             </div>
           </div>
-          <div class="w-full bg-linear-to-r from-[#024c39] to-[#01a982] px-3 pb-3">
-            <div class="w-full border border-[#05CC93] rounded-lg py-1.5 px-2 bg-white/5">
-              <p class="text-xs sm:text-[10px] lg:text-xs 2xl:text-sm text-white/90 font-normal line-clamp-2">
-                <slot name="description"></slot>
+          <div
+            class="w-full bg-linear-to-r from-[#024c39] to-[#01a982] flex justify-between items-center px-2 pb-2 2xl:pb-3 2xl:px-3"
+          >
+            <div class="w-full flex items-center justify-start gap-0.5 lmd:gap-1">
+              <p
+                class="text-xs sm:text-[10px] lg:text-xs 2xl:text-sm text-white/90 font-normal border border-[#05CC93] rounded md:rounded-md py-[3px] px-1.5 xl:px-2 whitespace-nowrap"
+              >
+                屬性
               </p>
+              <h6
+                v-for="tag in problem"
+                :key="tag"
+                class="text-xs sm:text-[10px] lg:text-xs 2xl:text-sm text-white/90 font-normal border border-[#00E0AF] bg-[#00E0AF]/50 rounded md:rounded-md py-0.5 px-1 xl:px-1.5 whitespace-nowrap"
+              >
+                {{ tag }}
+              </h6>
+            </div>
+            <div class="flex items-center justify-end">
+              <LogoSvgo class="h-4 sm:h-3 md:h-2 lmd:h-3 lg:h-4 xl:h-5 2xl:h-6 text-[#05CC93]" />
             </div>
           </div>
         </div>

@@ -2,8 +2,7 @@
 
 <template>
   <a
-    href="https://forms.gle/2e3GoPMxkrLGgWte8"
-    target="_blank"
+    href="javascript:void(0);"
     rel="noopener noreferrer"
     class="fixed inline-block bottom-2 right-2 lg:bottom-4 lg:right-4 z-40 group"
   >

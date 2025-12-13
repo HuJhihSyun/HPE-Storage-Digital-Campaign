@@ -89,12 +89,14 @@
               迎戰 AI 時代，<br />先解決 CIO 最頭痛的三件事
             </h1>
             <div
-              class="banner-heading mb-16 text-base sm:text-lg md:text-xl lg:text-3xl 2xl:text-4xl font-semibold HPEGraphikSemiBold leading-tight text-shadow-lg tracking-wide py-3 px-6 w-full sm:w-4/5 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-2xl after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
+              class="banner-heading inline-flex mb-16 text-base sm:text-lg md:text-lg lmd:text-xl lg:text-[22px] xl:text-[28px] 2xl:text-4xl font-semibold HPEGraphikSemiBold leading-tight text-shadow-lg tracking-normal 2xl:tracking-wide py-3 px-4 md:px-6 bg-linear-to-br from-[#0070F8]/20 via-black/20 to-black/0 rounded-2xl after:absolute after:content-[''] after:w-15 after:h-1 after:rounded-full after:bg-linear-to-r after:from-[#00E0AF] after:to-[#62E5F6] after:top-0 after:-translate-y-1/2 after:left-1/10"
             >
-              <h2 class="inline-block bg-clip-text text-transparent bg-linear-to-br from-[#00E0AF] to-[#62E5F6] to-70%">
-                <span class="whitespace-nowrap mr-4 md:mr-6 lg:mr-8">√ 新型態 VM 虛擬私有雲</span>
-                <span class="whitespace-nowrap mr-4 md:mr-6 lg:mr-8">√ 資安數據保護 100%</span>
-                <span class="whitespace-nowrap mr-4 md:mr-6 lg:mr-8">√ AI 數據平台</span>
+              <h2
+                class="inline-flex justify-start items-center bg-clip-text text-transparent bg-linear-to-br from-[#00E0AF] to-[#62E5F6] to-70% gap-2 sm:gap-4 md:gap-2 lg:gap-4 2xl:gap-6 flex-wrap md:flex-nowrap"
+              >
+                <span class="whitespace-nowrap">√ 新型態 VM 虛擬私有雲</span>
+                <span class="whitespace-nowrap">√ 資安數據保護 100%</span>
+                <span class="whitespace-nowrap">√ AI 數據平台</span>
               </h2>
             </div>
           </div>
@@ -115,7 +117,7 @@
               <h2
                 class="relative text-white text-xl sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-shadow-lg/30 leading-normal before:absolute before:content-[''] before:w-1/10 lg:before:w-1/4 before:h-1 before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:-translate-y-1/2 before:left-0 pt-3 lg:pt-5 backdrop-blur-[2px]"
               >
-                這些資料管理挑戰，<br class="block sm:hidden lg:block" />是不是讓您非常頭痛？
+                如何做好資料管理，<br class="block sm:hidden lg:block" />讓您不再頭痛？
               </h2>
               <client-only>
                 <div class="w-3/4 hidden lg:block">

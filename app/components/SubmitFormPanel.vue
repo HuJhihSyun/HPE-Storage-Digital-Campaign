@@ -304,7 +304,7 @@
     <div class="w-full mt-4">
       <div ref="formTitle" class="w-full inline-block">
         <h4 class="text-white font-bold text-sm md:text-base lg:text-lg text-shadow-lg/10 HPEGraphikSemiBold">
-          填寫資料，讓 HPE 專家為您評估現況與痛點
+          填寫資料，讓 HPE 專家為您評估現況
         </h4>
         <p class="text-white text-xs md:text-sm text-shadow-lg/10">快速掌握 AI 時代的資料管理、安全儲存方法</p>
       </div>
@@ -377,7 +377,6 @@
                   label="聯絡電話"
                   :type="'tel'"
                   placeholder="聯絡電話"
-                  required
                   :disabled="isFormSubmitSuccess"
                 />
               </div>
@@ -468,13 +467,13 @@
           <ul class="m-0 p-0 flex flex-col gap-2 list-none">
             <h4 class="text-sm font-semibold text-white text-shadow-sm/20 whitespace-nowrap">活動說明與注意事項：</h4>
             <li class="HPEGraphikRegular text-white text-xs">
-              活動說明：凡於本活動期間內，至本活動網站登錄個人資料並完成問卷填寫，前 5 名有機會抽中下方活動獎項！
+              活動說明：凡於本活動期間內，至本活動網站登錄個人資料並完成問卷填寫，有機會抽中下方活動獎項！
             </li>
             <li class="HPEGraphikRegular text-white text-xs">
               活動獎項：
               <ol class="list-disc list-inside pl-1">
-                <li>第一輪獎(10)：xxx</li>
-                <li>第二輪獎(5)：xxx</li>
+                <li>第一輪獎(10)： 全自動磁力攪拌杯</li>
+                <li>第二輪獎(5)：Panasonic 1L快煮鍋（3個）、飛利浦簡便掛燙機（2個）</li>
               </ol>
               第一輪獎項（4月底）將抽出十名，第二輪獎項（7月底）將抽出五名；將於活動結束後統一抽出。
             </li>

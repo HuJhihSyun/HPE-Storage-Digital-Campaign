@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-lmd: 992px;
+}
+
 @font-face {
   font-family: HPEGraphikBold;
   src: url("@/assets/font/HPE-Graphik-Bold.otf");

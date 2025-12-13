@@ -43,9 +43,7 @@ export function useValidateUtils() {
     }
 
     // 電話與分機號碼驗證: 只允許數字或符號
-    if (!form.phone) {
-      errorMessages.phone = '電話為必填欄位'
-    } else if (form.phone && !/^[0-9\-+\s()]*$/.test(form.phone)) {
+    if (form.phone && !/^[0-9\-+\s()]*$/.test(form.phone)) {
       errorMessages.phone = '請填寫有效之電話號碼'
     } else if (form.extension && !/^[0-9\-+\s()]*$/.test(form.extension)) {
       errorMessages.phone = '請填寫有效之分機號碼'
@@ -53,7 +51,7 @@ export function useValidateUtils() {
 
     if (!form.mobile) {
       errorMessages.mobile = '行動電話為必填欄位'
-    } else if (form.mobile && !/^09\d{8}$/.test(form.mobile)) {
+    } else if (form.mobile && !/^[0-9\-+\s()]*$/.test(form.mobile)) {
       errorMessages.mobile = '請填寫有效之行動電話號碼'
     }
 

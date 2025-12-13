@@ -35,14 +35,14 @@
             <div class="flex flex-col md:flex-row justify-end gap-2">
               <button
                 type="button"
-                class="relative flex justify-center items-center gap-1 w-full text-white bg-gray-400 hover:bg-gray-500 text-shadow-sm/20 font-semibold py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden"
+                class="relative flex justify-center items-center order-2 md:order-1 gap-1 w-full text-white bg-gray-400 hover:bg-gray-500 text-shadow-sm/20 font-semibold py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden"
                 @click="onCancel"
               >
                 <span class="text-lg">{{ modalOptions.cancelText || '取消' }}</span>
               </button>
               <button
                 type="button"
-                class="submit-button relative flex justify-center items-center gap-1 w-full text-white text-shadow-sm/20 font-semibold py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+                class="submit-button relative flex justify-center items-center order-1 md:order-2 gap-1 w-full text-white text-shadow-sm/20 font-semibold py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
                 @click="onConfirm"
               >
                 <span class="text-lg">{{ modalOptions.confirmText || '確定' }}</span>
