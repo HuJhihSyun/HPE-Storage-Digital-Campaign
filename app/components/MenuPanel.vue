@@ -15,13 +15,6 @@
         })
       },
       id: 'game'
-    },
-    {
-      name: '點擊有好康',
-      function: () => {
-        window.open('https://forms.gle/2e3GoPMxkrLGgWte8', '_blank')
-      },
-      id: 'lottery'
     }
   ]
 
@@ -67,8 +60,7 @@
       <li
         v-for="(item, index) in menuItems"
         :key="item.id"
-        class="text-white hover:text-[#62E5F6] pr-4 whitespace-nowrap pointer-events-auto"
-        :class="{ 'hidden sm:inline-block': index === 0, 'hidden lg:inline-block': index === 1 }"
+        class="text-white hover:text-[#62E5F6] pr-4 whitespace-nowrap pointer-events-auto hidden sm:inline-block"
       >
         <a @click="item.function" class="cursor-pointer">{{ item.name }}</a>
       </li>
