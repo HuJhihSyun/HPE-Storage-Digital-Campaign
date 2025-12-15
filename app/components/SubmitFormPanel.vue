@@ -453,7 +453,7 @@
               Storage】活動（以下簡稱本活動），參與本活動者（以下簡稱參加者）同意接受並遵守以下辦法及規定：
             </p>
             <li class="HPEGraphikRegular text-white text-xs">
-              活動期間：2026 年 1 月 15 日 12:00 ~ 2026 年 4 月 20 日 23:59 止（最後活動時間以主辦單位系統認定為準）。
+              活動期間：2025 年 12 月 16 日 12:00 ~ 2026 年 4 月 20 日 23:59 止（最後活動時間以主辦單位系統認定為準）。
             </li>
             <li class="HPEGraphikRegular text-white text-xs">
               主辦單位：
