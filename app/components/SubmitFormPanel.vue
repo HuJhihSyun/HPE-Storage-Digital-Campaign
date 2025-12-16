@@ -453,7 +453,7 @@
               Storage】活動（以下簡稱本活動），參與本活動者（以下簡稱參加者）同意接受並遵守以下辦法及規定：
             </p>
             <li class="HPEGraphikRegular text-white text-xs">
-              活動期間：2025 年 12 月 16 日 12:00 ~ 2026 年 4 月 20 日 23:59 止（最後活動時間以主辦單位系統認定為準）。
+              活動期間：2025 年 12 月 17 日 12:00 ~ 2026 年 1 月 31 日 23:59 止（最後活動時間以主辦單位系統認定為準）。
             </li>
             <li class="HPEGraphikRegular text-white text-xs">
               主辦單位：
@@ -467,7 +467,7 @@
           <ul class="m-0 p-0 flex flex-col gap-2 list-none">
             <h4 class="text-sm font-semibold text-white text-shadow-sm/20 whitespace-nowrap">活動說明與注意事項：</h4>
             <li class="HPEGraphikRegular text-white text-xs">
-              活動說明：凡於本活動期間內，至本活動網站登錄個人資料並完成問卷填寫，有機會抽中下方活動獎項！
+              活動說明：凡於本活動期間內，至本活動網站登錄個人資料並完成問卷填寫，有機會參與後續的抽獎活動哦！
             </li>
             <li class="HPEGraphikRegular text-white text-xs">
               活動獎項：
@@ -478,7 +478,7 @@
               第一輪獎項（4月底）將抽出十名，第二輪獎項（7月底）將抽出五名；將於活動結束後統一抽出。
             </li>
             <li class="HPEGraphikRegular text-white text-xs">
-              得獎公布：主辦單位將於 2026 年 4 月 23 日 23:59 前，於本活動網站公布得獎名單。
+              得獎公布：第一輪獎項主辦單位將於 2026 年 4 月 30 日 23:59 前，於本活動網站公布得獎名單。
             </li>
             <li class="HPEGraphikRegular text-white text-xs">
               領獎方式：

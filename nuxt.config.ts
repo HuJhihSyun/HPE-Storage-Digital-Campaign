@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: process.env.NODE_ENV === 'production' ? '/HPE-Storage-Digital-Campaign/' : '/',
+    baseURL: process.env.NODE_ENV === 'production' ? '/Data-Services-and-Storage/' : '/',
     buildAssetsDir: '/static/',
 
     head: {

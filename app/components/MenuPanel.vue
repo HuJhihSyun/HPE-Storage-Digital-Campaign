@@ -20,8 +20,9 @@
 
   // 活動開始時間 2025 年 12 月 29 日 12:00
   // 活動結束時間 2026 年 1 月 19 日 23:59
-  const eventStartTime = new Date('2025-12-29T12:00:00')
-  const eventEndTime = new Date('2026-01-19T23:59:59')
+  const eventStartTime = new Date('2025-12-17T12:00:00')
+  const eventEndTime = new Date('2026-01-31T23:59:59')
+  const drawOffTime = new Date('2026-04-29T23:59:59')
   const currentTime = ref(new Date())
 
   const isEventActive = computed(() => {
@@ -29,7 +30,8 @@
   })
 
   const targetTime = ref<Date | null>(null)
-  targetTime.value = currentTime.value < eventStartTime ? eventStartTime : eventEndTime
+  // targetTime.value = currentTime.value < eventStartTime ? eventStartTime : eventEndTime
+  targetTime.value = drawOffTime
 
   const diff = targetTime.value ? targetTime.value.getTime() - currentTime.value.getTime() : 0
   const days = ref(Math.floor(diff / (1000 * 60 * 60 * 24)))
@@ -65,11 +67,9 @@
         <a @click="item.function" class="cursor-pointer">{{ item.name }}</a>
       </li>
       <li class="text-white pr-4 flex justify-center items-center gap-2">
-        <span class="whitespace-nowrap">{{
-          currentTime > eventEndTime ? '活動已結束' : isEventActive ? '距離結束' : '距離下一次好康抽獎'
-        }}</span>
+        <span class="whitespace-nowrap">{{ currentTime > drawOffTime ? '活動已結束' : '距離下一次好康抽獎' }}</span>
         <client-only>
-          <div class="flex justify-center items-center gap-2 xl:gap-3">
+          <div v-if="drawOffTime >= currentTime" class="flex justify-center items-center gap-2 xl:gap-3">
             <span
               class="bg-clip-text text-transparent bg-linear-to-br from-[#01A982] to-[#62E5F6] text-2xl sm:text-4xl md:text-3xl lg:text-4xl 2xl:text-5xl HPEGraphikBold whitespace-nowrap"
               >{{ days }}</span
