@@ -39,31 +39,31 @@
     width: 100%;
     height: 100%;
     background-color: #292d3a;
-    font-family: HPEGraphikRegular, '微軟正黑體', sans-serif;
+    font-family: HPEGraphikRegular, sans-serif;
   }
 
   .HPEGraphikBold {
-    font-family: HPEGraphikBold, '微軟正黑體', sans-serif;
+    font-family: HPEGraphikBold, sans-serif;
     font-weight: bold;
   }
 
   .HPEGraphikSemiBold {
-    font-family: HPEGraphikSemiBold, '微軟正黑體', sans-serif;
+    font-family: HPEGraphikSemiBold, sans-serif;
     font-weight: 600;
   }
 
   .HPEGraphikMedium {
-    font-family: HPEGraphikMedium, '微軟正黑體', sans-serif;
+    font-family: HPEGraphikMedium, sans-serif;
     font-weight: 500;
   }
 
   .HPEGraphikRegular {
-    font-family: HPEGraphikRegular, '微軟正黑體', sans-serif;
+    font-family: HPEGraphikRegular, sans-serif;
     font-weight: normal;
   }
 
   .HPEGraphikLight {
-    font-family: HPEGraphikLight, '微軟正黑體', sans-serif;
+    font-family: HPEGraphikLight, sans-serif;
     font-weight: 300;
   }
 
