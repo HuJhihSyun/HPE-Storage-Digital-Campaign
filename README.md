@@ -61,13 +61,3 @@ nuxt.config.ts runtimeConfig => page: useRuntimeConfig()
 [Swiper](https://swiperjs.com/vue): Installation `pnpm i swiper`與基本程式碼套用
 [配置選項簡體中文版](https://www.swiper.com.cn/api/parameters/42.html)
 Q. Too big/wide slider on initialization [#3599](https://github.com/nolimits4web/swiper/issues/3599)
-
----
-
-# 待執行項目 Todo List
-
-* 滑動至區塊功能
-* Answer 行動版版面調整
-* Feature 行動版版面調整
-* menuPanel 行動版版面調整
-* submitPanel 行動版版面調整

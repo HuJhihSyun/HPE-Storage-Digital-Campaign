@@ -180,6 +180,46 @@
           </div>
         </div>
 
+        <div
+          class="w-full flex sm:hidden justify-center items-center"
+          :class="{ 'mt-15': gameStep < GameStep.Completed }"
+        >
+          <template v-if="gameStep <= GameStep.Started">
+            <button
+              type="button"
+              class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-20 py-2 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+              :class="{ 'pointer-events-none disabled': gameStep === GameStep.Started }"
+              @click="startGame"
+            >
+              <span class="text-lg">開始測驗</span>
+            </button>
+          </template>
+          <transition name="fade" mode="out-in">
+            <template v-if="gameStep === GameStep.CardReady">
+              <div
+                class="flex justify-center items-center gap-2 bg-linear-to-br from-[#0070F8]/50 via-[#292D3A]/50 to-[#292D3A]/50 pr-2 pl-6 py-2 rounded-full"
+              >
+                <h5 class="text-sm sm:text-base text-gray-200">
+                  <template v-if="!cardSelected.length">
+                    請點選 <span class="HPEGraphikRegular">1-3</span> 張卡片（可複選）
+                  </template>
+                  <template v-else-if="cardSelected.length"
+                    >已選擇 <span class="HPEGraphikRegular">{{ cardSelected.length }}</span> 張卡片
+                  </template>
+                </h5>
+                <button
+                  type="button"
+                  class="submit-button relative inline-flex justify-center items-center gap-1 text-white text-shadow-sm/20 font-semibold px-6 py-1 z-10 rounded-full transition-opacity pointer-events-auto cursor-pointer overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-[-1]"
+                  :class="{ 'pointer-events-none disabled': cardSelected.length === 0 }"
+                  @click="optionConfirm"
+                >
+                  <span class="text-lg whitespace-nowrap">確認</span>
+                </button>
+              </div>
+            </template>
+          </transition>
+        </div>
+
         <transition name="fade" mode="out-in">
           <div
             v-if="gameStep < GameStep.Loading"

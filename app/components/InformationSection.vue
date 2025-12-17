@@ -99,7 +99,7 @@
   const successStories: SuccessStory[] = [
     {
       id: 'story-3',
-      title: '中華電信 IDC｜Zerto 秒級資料保護 × 分鐘級災難復原',
+      title: 'HPE 攜手中華電信領先業界打造 IDC 災難備援服務',
       description: '將資料恢復時間從數週縮短到數分鐘，業務連續性的真實驗證',
       icon: markRaw(wifiSvg),
       image: story3Pic,
