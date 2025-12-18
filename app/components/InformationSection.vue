@@ -13,6 +13,7 @@
   import story1Pic from '@/assets/images/story-1.jpg'
   import story2Pic from '@/assets/images/story-2.jpg'
   import story3Pic from '@/assets/images/story-3.jpg'
+  import story4Pic from '@/assets/images/story-4.jpg'
 
   import { useWindowSize } from '@vueuse/core'
   const { width } = useWindowSize()
@@ -98,8 +99,16 @@
 
   const successStories: SuccessStory[] = [
     {
-      id: 'story-3',
+      id: 'story-4',
       title: 'HPE 攜手中華電信領先業界打造 IDC 災難備援服務',
+      description: '中華電信採用 HPE ZertoSoftware 創新技術提供全新 IDC 災難復原服務，協助台灣企業強化網路韌性與資料保護能力',
+      icon: markRaw(wifiSvg),
+      image: story4Pic,
+      link: 'https://www.hpe.com/tw/en/collaterals/collateral.a50014532zht.html',
+    },
+    {
+      id: 'story-3',
+      title: '中華電信 IDC｜Zerto 秒級資料保護 × 分鐘級災難復原',
       description: '將資料恢復時間從數週縮短到數分鐘，業務連續性的真實驗證',
       icon: markRaw(wifiSvg),
       image: story3Pic,
@@ -219,7 +228,7 @@
                   >同行都在這樣做</span
                 >
               </h4>
-              <div class="grid grid-cols-1 sm:grid-cols-3 mt-4 gap-2">
+              <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 mt-4 gap-2">
                 <a
                   v-for="story in successStories"
                   :key="story.id"

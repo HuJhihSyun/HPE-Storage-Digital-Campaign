@@ -28,9 +28,9 @@
         />
       </div>
       <h6
-        class="bg-clip-text text-transparent bg-linear-to-br from-[#7764FC] to-[#62E5F6] font-bold text-xs md:text-sm whitespace-nowrap"
+        class="bg-clip-text text-center text-transparent bg-linear-to-br from-[#7764FC] to-[#62E5F6] font-bold text-xs md:text-sm whitespace-nowrap"
       >
-        點擊有好康
+        完成左側問卷<br />抽好康
       </h6>
     </div>
     <div
