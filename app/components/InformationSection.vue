@@ -271,16 +271,16 @@
                   :href="story.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="basic-panel w-full flex justify-center items-center bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl group overflow-hidden"
+                  class="basic-panel w-full flex flex-col sm:flex-row justify-center items-center bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl group overflow-hidden"
                 >
-                  <img :src="story.image" class="relative aspect-3/2 w-1/2 sm:w-1/3 bg-gray-500/50 rounded-2xl">
+                  <img :src="story.image" class="relative aspect-3/2 w-full sm:w-1/2 md:w-1/3 bg-gray-500/50 rounded-2xl">
                     <div
                       class="absolute left-2 top-2 w-7 h-7 p-1 aspect-square bg-linear-to-br from-[#00E0AF] to-[#62E5F6] group-hover:from-[#00E0AF] group-hover:to-[#0070F8] rounded-lg flex justify-center items-center"
                     >
                       <component :is="story.icon" class="inline-block w-full h-full text-white" />
                     </div>
                   </img>
-                  <div class="w-1/2 sm:w-2/3 p-3">
+                  <div class="w-full sm:w-1/2 md:w-2/3 p-3">
                     <h5 class="text-base xl:text-lg font-medium HPEGraphikMedium leading-tight bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] group-hover:from-[#00E0AF] group-hover:to-[#0070F8]">
                       {{ story.title }}
                     </h5>
