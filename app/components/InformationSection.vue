@@ -97,7 +97,7 @@
     link: string
   }
 
-  const successStories: SuccessStory[] = [
+  const highlightStories: SuccessStory[] = [
     {
       id: 'story-4',
       title: 'HPE 攜手中華電信領先業界打造 IDC 災難備援服務',
@@ -114,6 +114,9 @@
       image: story3Pic,
       link: 'https://www.idc.hinet.net/EnhancedService_Recovery.html',
     },
+  ]
+
+  const successStories: SuccessStory[] = [
     {
       id: 'story-1',
       title: '驊陞科技｜35年製造老廠的 AI 智慧工廠轉型之路',
@@ -130,7 +133,6 @@
       image: story2Pic,
       link: 'https://paths.ext.hpe.com/c/a50011607enw?x=cIiY0G&cc=tw&lang=en&lb-height=100&lb-width=100&lb-mode=overlay&utm_source=&utm_medium=&utm_campaign=&utm_content=&utm_term=&utm_geo=&crid=&plid=&pf_route=a00149500',
     },
-
   ]
 </script>
 
@@ -220,17 +222,13 @@
           <div class="w-full lg:w-2/3">
             <div class="w-full">
               <h4
-                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
+                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold HPEGraphikMedium before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
               >
-                成功故事櫥窗
-                <span
-                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5 whitespace-nowrap"
-                  >同行都在這樣做</span
-                >
+                HPE 數據安全方舟
               </h4>
-              <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 mt-4 gap-2">
+              <div class="grid grid-cols-1 sm:grid-cols-2 mt-4 gap-2">
                 <a
-                  v-for="story in successStories"
+                  v-for="story in highlightStories"
                   :key="story.id"
                   :href="story.link"
                   target="_blank"
@@ -245,7 +243,7 @@
                     </div>
                   </img>
                   <div class="w-full p-3">
-                    <h5 class="text-sm sm:text-[13px] md:text-sm xl:text-[15px] font-medium HPEGraphikMedium bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] group-hover:from-[#00E0AF] group-hover:to-[#0070F8]">
+                    <h5 class="text-base xl:text-lg font-medium leading-tight HPEGraphikMedium bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] group-hover:from-[#00E0AF] group-hover:to-[#0070F8]">
                       {{ story.title }}
                     </h5>
                     <h6 class="text-xs md:text-[13px] xl:text-sm font-light text-gray-200 group-hover:text-white HPEGraphikRegular mt-1">
@@ -255,6 +253,46 @@
                 </a>
               </div>
             </div>
+
+            <div class="w-full mt-8 lg:mt-10">
+              <h4
+                class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
+              >
+                成功故事櫥窗
+                <span
+                  class="text-[#00E0AF] text-xs HPEGraphikRegular ml-1 border border-[#00E0AF] rounded-full px-2 py-0.5 whitespace-nowrap"
+                  >同行都在這樣做</span
+                >
+              </h4>
+              <div class="flex flex-col mt-4 gap-2">
+                <a
+                  v-for="story in successStories"
+                  :key="story.id"
+                  :href="story.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="basic-panel w-full flex justify-center items-center bg-linear-to-b from-black/50 to-[#292d3a]/50 backdrop-blur-xs rounded-2xl group overflow-hidden"
+                >
+                  <img :src="story.image" class="relative aspect-3/2 w-1/2 sm:w-1/3 bg-gray-500/50 rounded-2xl">
+                    <div
+                      class="absolute left-2 top-2 w-7 h-7 p-1 aspect-square bg-linear-to-br from-[#00E0AF] to-[#62E5F6] group-hover:from-[#00E0AF] group-hover:to-[#0070F8] rounded-lg flex justify-center items-center"
+                    >
+                      <component :is="story.icon" class="inline-block w-full h-full text-white" />
+                    </div>
+                  </img>
+                  <div class="w-1/2 sm:w-2/3 p-3">
+                    <h5 class="text-base xl:text-lg font-medium HPEGraphikMedium leading-tight bg-clip-text text-transparent bg-linear-to-bl from-[#00E0AF] to-[#62E5F6] group-hover:from-[#00E0AF] group-hover:to-[#0070F8]">
+                      {{ story.title }}
+                    </h5>
+                    <h6 class="text-xs md:text-[13px] xl:text-sm font-light text-gray-200 group-hover:text-white HPEGraphikRegular mt-1">
+                      {{ story.description }}
+                    </h6>
+                  </div>
+                  <component :is="story.icon" class="absolute bottom-2 right-2 opacity-10 mix-blend-soft-light w-20 h-20 inline-block text-white" />
+                </a>
+              </div>
+            </div>
+
             <div class="w-full mt-8 lg:mt-10">
               <h4
                 class="relative pl-4 text-white text-lg lg:text-xl 2xl:text-2xl font-bold before:absolute before:content-[''] before:w-1 before:h-full before:bg-linear-to-br before:from-[#00E0AF] before:to-[#62E5F6] before:top-0 before:left-0 leading-none"
